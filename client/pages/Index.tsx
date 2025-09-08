@@ -39,6 +39,7 @@ export default function Index() {
               <Link to="/islands" className="px-5 py-2.5 rounded-md bg-gradient-to-r from-primary to-accent text-primary-foreground shadow hover:shadow-lg">Explore Islands</Link>
               <Link to="/gallery" className="px-5 py-2.5 rounded-md bg-secondary text-secondary-foreground hover:opacity-90">Visit Galleries</Link>
               <Link to="/library" className="px-5 py-2.5 rounded-md bg-muted hover:bg-muted/80">Memory Library</Link>
+              <Link to="/presentation" className="px-5 py-2.5 rounded-md bg-primary/10 text-primary border border-primary/30">View Presentation</Link>
             </div>
             <div className="mt-4 text-sm text-muted-foreground">Progress • {fragments} Fragments · {shards} Shards · {keys} Keys</div>
           </div>
