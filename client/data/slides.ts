@@ -24,7 +24,7 @@ export const slides: Slide[] = [
     title: "The Mind Palace Quest",
     subtitle: "Worlds of Imagination",
     body: "Explore The Mind Palace for self-discovery and imaginative adventures. Hidden treasures, puzzles, and dream fragments await.",
-    bg: "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Ff27c5e1586d04e24a3fdf26ce4e5cd93?format=webp&width=1600",
+    bg: "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fb499c1c408164ef49bf18c1307005196?format=webp&width=1600",
     contentType: "text",
     hotspots: [
       { x: 82, y: 8, w: 10, h: 12, action: "collect", id: "frag-cover-1" },
@@ -34,7 +34,7 @@ export const slides: Slide[] = [
     id: "welcome",
     title: "Welcome",
     body: "Embark on a transformative journey through The Mind Palace, where imagination fuels self-discovery and personal growth in an interactive quest.",
-    bg: "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fe45a2631e64b47ae8e8c114df4f07d02?format=webp&width=1600",
+    bg: "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fdd1fbb8758bc4ec78fdbccfd39ed63a7?format=webp&width=1600",
     contentType: "text",
     hotspots: [{ x: 10, y: 70, w: 12, h: 12, action: "link", id: "islands" }],
   },
