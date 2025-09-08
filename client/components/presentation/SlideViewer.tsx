@@ -231,18 +231,24 @@ export function SlideViewer() {
         </div>
       </div>
 
-      <div className="border-t border-border/30 p-3 overflow-x-auto">
-        <div className="flex gap-2">
-          {SLIDES.map((s, i) => (
-            <button
-              key={s.id}
-              onClick={() => setIndex(i)}
-              className={`w-36 flex-shrink-0 rounded-md overflow-hidden border ${i === index ? "ring-2 ring-primary" : ""}`}
-            >
-              <img src={s.bg} className="w-full h-20 object-cover" />
-              <div className="p-2 text-xs text-muted-foreground">{s.title}</div>
-            </button>
-          ))}
+      <div className="border-t border-border/30 p-3">
+        {/* Constellation */}
+        <div className="w-full flex items-center justify-center">
+          <svg viewBox="0 0 300 80" className="w-full max-w-2xl">
+            {SLIDES.map((s, i) => {
+              const x = 20 + i * (240 / Math.max(SLIDES.length - 1, 1));
+              const y = 40 + Math.sin(i * 0.8 + index * 0.4) * 10;
+              const lit = !!collected[`frag-slide-${s.id}`] || i <= index;
+              return (
+                <g key={s.id} onClick={() => setIndex(i)} className="cursor-pointer">
+                  <circle cx={x} cy={y} r={lit ? 7 : 4} fill={lit ? "hsl(var(--accent))" : "hsl(var(--muted))"} />
+                  <text x={x + 10} y={y + 4} fontSize={10} fill="currentColor" className="text-xs">
+                    {s.title}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
         </div>
       </div>
     </div>
