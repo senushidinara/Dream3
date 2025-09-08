@@ -40,14 +40,16 @@ function ColorReveal() {
 
 export default function Gallery() {
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-gradient-to-b from-background to-background/40">
+    <div className="min-h-[calc(100vh-64px)]">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <h1 className="text-3xl font-extrabold tracking-tight">
-          Passion Galleries
-        </h1>
-        <p className="text-muted-foreground mt-2">
-          Each object is a portal. Play, create, and unlock new rooms.
-        </p>
+        <div className="page-hero rounded-xl overflow-hidden" style={{ backgroundImage: `url('https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fc4e7bcb3c490419da0e26370418c5825?format=webp&width=1600')`, height: 320 }}>
+          <div className="p-8">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+              Passion Galleries
+            </h1>
+            <p className="text-white/85 mt-2 max-w-2xl">Each object is a portal. Play, create, and unlock new rooms.</p>
+          </div>
+        </div>
 
         <div className="mt-8 grid lg:grid-cols-2 gap-6">
           <div className="relative">
