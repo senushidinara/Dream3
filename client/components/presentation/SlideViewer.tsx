@@ -41,7 +41,8 @@ export function SlideViewer() {
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") setIndex((i) => Math.min(i + 1, SLIDES.length - 1));
+      if (e.key === "ArrowRight")
+        setIndex((i) => Math.min(i + 1, SLIDES.length - 1));
       if (e.key === "ArrowLeft") setIndex((i) => Math.max(i - 1, 0));
     };
     window.addEventListener("keydown", handler);
@@ -74,7 +75,8 @@ export function SlideViewer() {
     };
   }, []);
 
-  const go = (dir: number) => setIndex((i) => Math.min(Math.max(i + dir, 0), SLIDES.length - 1));
+  const go = (dir: number) =>
+    setIndex((i) => Math.min(Math.max(i + dir, 0), SLIDES.length - 1));
 
   // parallax
   const [px, setPx] = useState(0);
@@ -103,7 +105,14 @@ export function SlideViewer() {
 
   useEffect(() => {
     let raf = 0;
-    let particles: { x: number; y: number; vx: number; vy: number; r: number; a: number }[] = [];
+    let particles: {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      r: number;
+      a: number;
+    }[] = [];
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d")!;
@@ -168,7 +177,9 @@ export function SlideViewer() {
   const [reverbOn, setReverbOn] = useState(false);
 
   const setupAudio = (withEffect = false) => {
-    if (!audioCtxRef.current) audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+    if (!audioCtxRef.current)
+      audioCtxRef.current = new (window.AudioContext ||
+        (window as any).webkitAudioContext)();
     const ctx = audioCtxRef.current!;
 
     const osc = ctx.createOscillator();
@@ -227,21 +238,29 @@ export function SlideViewer() {
     setupAudio(reverbOn);
   }, [reverbOn]);
 
-
   const handleHotspot = (hs: Slide["hotspots"][0]) => {
     if (!hs) return;
     if (hs.action === "collect") {
       if (!game.collected[hs.id]) {
         game.collectFragment(hs.id);
         // toast
-        toast({ title: "Dream Fragment", description: "You found a shimmering fragment!" });
+        toast({
+          title: "Dream Fragment",
+          description: "You found a shimmering fragment!",
+        });
         const newFragments = game.fragments + 1;
         if (newFragments > 0 && newFragments % 3 === 0) {
           game.awardShard(1);
-          toast({ title: "Vision Shard", description: "A vision shard glows — you gained a shard!" });
+          toast({
+            title: "Vision Shard",
+            description: "A vision shard glows — you gained a shard!",
+          });
         }
       } else {
-        toast({ title: "Already collected", description: "This fragment has already been collected." });
+        toast({
+          title: "Already collected",
+          description: "This fragment has already been collected.",
+        });
       }
     }
 
@@ -259,39 +278,85 @@ export function SlideViewer() {
   };
 
   return (
-    <div ref={containerRef} className="relative rounded-lg overflow-hidden border border-border/50 bg-card/60">
+    <div
+      ref={containerRef}
+      className="relative rounded-lg overflow-hidden border border-border/50 bg-card/60"
+    >
       <div className="w-full aspect-[16/9] relative">
         <img
           src={slide.bg}
           alt={slide.title}
           className="absolute inset-0 w-full h-full object-cover transform transition-transform will-change-transform"
-          style={{ transform: `translate3d(${px * 8}px, ${py * 6}px, 0) scale(${1 + Math.abs(px) * 0.02 + Math.abs(py) * 0.02})`, filter: filter }}
+          style={{
+            transform: `translate3d(${px * 8}px, ${py * 6}px, 0) scale(${1 + Math.abs(px) * 0.02 + Math.abs(py) * 0.02})`,
+            filter: filter,
+          }}
         />
 
         {/* subtle particle overlay / canvas */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.02),transparent_10%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.02),transparent_10%)]" />
-          <canvas ref={canvasRef} className={`absolute inset-0 w-full h-full ${particlesOn ? "opacity-100" : "opacity-0"}`} />
+          <canvas
+            ref={canvasRef}
+            className={`absolute inset-0 w-full h-full ${particlesOn ? "opacity-100" : "opacity-0"}`}
+          />
         </div>
 
-        <div className="absolute inset-0 bg-black/28" style={{ backdropFilter: "blur(2px)" }} />
+        <div
+          className="absolute inset-0 bg-black/28"
+          style={{ backdropFilter: "blur(2px)" }}
+        />
 
         <div className="absolute inset-0 p-8 flex items-start">
           {/* Left info panel to ensure contrast and readability */}
-          <div className="pointer-events-auto max-w-md w-full bg-[rgba(8,6,12,0.92)] backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-2xl border border-primary/10 z-50 quest-panel" style={{ minWidth: 320, maxWidth: 520, maxHeight: '62vh', overflowY: 'auto' }}>
+          <div
+            className="pointer-events-auto max-w-md w-full bg-[rgba(8,6,12,0.92)] backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-2xl border border-primary/10 z-50 quest-panel"
+            style={{
+              minWidth: 320,
+              maxWidth: 520,
+              maxHeight: "62vh",
+              overflowY: "auto",
+            }}
+          >
             <header>
-              <h2 className="quest-title text-primary" style={{ fontSize: 'clamp(28px, 4.5vw, 48px)', margin: 0 }}>{slide.title}</h2>
-              {slide.subtitle && <p className="mt-2 text-sm text-muted-foreground" style={{ lineHeight: 1.35, opacity: 0.95, margin: 0 }}>{slide.subtitle}</p>}
+              <h2
+                className="quest-title text-primary"
+                style={{ fontSize: "clamp(28px, 4.5vw, 48px)", margin: 0 }}
+              >
+                {slide.title}
+              </h2>
+              {slide.subtitle && (
+                <p
+                  className="mt-2 text-sm text-muted-foreground"
+                  style={{ lineHeight: 1.35, opacity: 0.95, margin: 0 }}
+                >
+                  {slide.subtitle}
+                </p>
+              )}
             </header>
 
             <div className="mt-4">
-              <p className="quest-body text-foreground/95" style={{ margin: 0 }}>{slide.body}</p>
+              <p
+                className="quest-body text-foreground/95"
+                style={{ margin: 0 }}
+              >
+                {slide.body}
+              </p>
 
-              {slide.contentType === "video" && (slide.videoUrls || slide.videoUrl) && (
-                <div className="mt-4">
-                  {slide.videoUrls ? <VideoGallery urls={slide.videoUrls} /> : <video controls src={slide.videoUrl} className="w-full rounded-md shadow-lg" />}
-                </div>
-              )}
+              {slide.contentType === "video" &&
+                (slide.videoUrls || slide.videoUrl) && (
+                  <div className="mt-4">
+                    {slide.videoUrls ? (
+                      <VideoGallery urls={slide.videoUrls} />
+                    ) : (
+                      <video
+                        controls
+                        src={slide.videoUrl}
+                        className="w-full rounded-md shadow-lg"
+                      />
+                    )}
+                  </div>
+                )}
 
               {slide.contentType === "game" && slide.game === "rhythm" && (
                 <div className="mt-4 bg-background/60 p-3 rounded pointer-events-auto">
@@ -317,7 +382,12 @@ export function SlideViewer() {
             key={h.id}
             onClick={() => handleHotspot(h)}
             className="absolute z-10 border border-primary/40 bg-gradient-to-tr from-primary/20 to-accent/10 rounded-full shadow-lg backdrop-blur-sm hover:scale-105 transform transition-all animate-pulse"
-            style={{ left: `${h.x}%`, top: `${h.y}%`, width: `${h.w}%`, height: `${h.h}%` }}
+            style={{
+              left: `${h.x}%`,
+              top: `${h.y}%`,
+              width: `${h.w}%`,
+              height: `${h.h}%`,
+            }}
             aria-label={`Crystal hotspot ${h.id}`}
           />
         ))}
@@ -331,18 +401,33 @@ export function SlideViewer() {
 
       <div className="p-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <button onClick={() => go(-1)} className="px-3 py-1.5 rounded-md bg-gradient-to-br from-muted to-muted/80">← Previous Realm</button>
-          <button onClick={() => go(1)} className="px-3 py-1.5 rounded-md bg-gradient-to-br from-muted to-muted/80">Next Realm →</button>
-          <div className="ml-4 text-sm text-muted-foreground">Realm {index + 1} of {SLIDES.length}</div>
+          <button
+            onClick={() => go(-1)}
+            className="px-3 py-1.5 rounded-md bg-gradient-to-br from-muted to-muted/80"
+          >
+            ← Previous Realm
+          </button>
+          <button
+            onClick={() => go(1)}
+            className="px-3 py-1.5 rounded-md bg-gradient-to-br from-muted to-muted/80"
+          >
+            Next Realm →
+          </button>
+          <div className="ml-4 text-sm text-muted-foreground">
+            Realm {index + 1} of {SLIDES.length}
+          </div>
         </div>
 
         <div className="flex items-center gap-2">
           <select
             onChange={(e) => {
               const v = e.target.value;
-              if (v === "dim") setFilter("brightness(0.6) contrast(1.05) blur(0px)");
-              if (v === "blur") setFilter("brightness(0.6) contrast(1.02) blur(2px)");
-              if (v === "wash") setFilter("brightness(0.82) saturate(1.15) hue-rotate(10deg)");
+              if (v === "dim")
+                setFilter("brightness(0.6) contrast(1.05) blur(0px)");
+              if (v === "blur")
+                setFilter("brightness(0.6) contrast(1.02) blur(2px)");
+              if (v === "wash")
+                setFilter("brightness(0.82) saturate(1.15) hue-rotate(10deg)");
               if (v === "none") setFilter("");
             }}
             className="text-sm p-2 rounded bg-muted"
@@ -353,14 +438,45 @@ export function SlideViewer() {
             <option value="wash">Color Wash</option>
           </select>
 
-          <button onClick={() => { setParticlesOn((s) => !s); toast({ title: particlesOn ? 'Particles off' : 'Particles on' }); }} className={`text-sm px-3 py-1 rounded-md ${particlesOn ? 'bg-primary/20' : 'bg-primary/10'}`}>Particles</button>
+          <button
+            onClick={() => {
+              setParticlesOn((s) => !s);
+              toast({ title: particlesOn ? "Particles off" : "Particles on" });
+            }}
+            className={`text-sm px-3 py-1 rounded-md ${particlesOn ? "bg-primary/20" : "bg-primary/10"}`}
+          >
+            Particles
+          </button>
 
-          <button onClick={() => { setReverbOn((r) => !r); toast({ title: reverbOn ? 'Reverb off' : 'Reverb on' }); }} className={`text-sm px-3 py-1 rounded-md ${reverbOn ? 'bg-primary/20' : 'bg-primary/10'}`}>{reverbOn ? 'Reverb On' : 'Reverb Off'}</button>
+          <button
+            onClick={() => {
+              setReverbOn((r) => !r);
+              toast({ title: reverbOn ? "Reverb off" : "Reverb on" });
+            }}
+            className={`text-sm px-3 py-1 rounded-md ${reverbOn ? "bg-primary/20" : "bg-primary/10"}`}
+          >
+            {reverbOn ? "Reverb On" : "Reverb Off"}
+          </button>
 
-          <button onClick={toggleSound} className="text-sm px-3 py-1 rounded-md bg-primary/10">{soundOn ? "🔊 Ambient On" : "🔈 Ambient Off"}</button>
+          <button
+            onClick={toggleSound}
+            className="text-sm px-3 py-1 rounded-md bg-primary/10"
+          >
+            {soundOn ? "🔊 Ambient On" : "🔈 Ambient Off"}
+          </button>
 
-          <Link to="/islands" className="text-sm px-3 py-1 rounded-md bg-primary/20 text-primary">Enter Map</Link>
-          <Link to="/gallery" className="text-sm px-3 py-1 rounded-md bg-secondary text-secondary-foreground">Enter Galleries</Link>
+          <Link
+            to="/islands"
+            className="text-sm px-3 py-1 rounded-md bg-primary/20 text-primary"
+          >
+            Enter Map
+          </Link>
+          <Link
+            to="/gallery"
+            className="text-sm px-3 py-1 rounded-md bg-secondary text-secondary-foreground"
+          >
+            Enter Galleries
+          </Link>
         </div>
       </div>
 
@@ -372,9 +488,26 @@ export function SlideViewer() {
               const y = 40 + Math.sin(i * 0.8 + index * 0.4) * 10;
               const lit = !!game.collected[`frag-slide-${s.id}`] || i <= index;
               return (
-                <g key={s.id} onClick={() => setIndex(i)} className="cursor-pointer">
-                  <circle cx={x} cy={y} r={lit ? 7 : 4} fill={lit ? "hsl(var(--accent))" : "hsl(var(--muted))"} />
-                  <text x={x + 10} y={y + 4} fontSize={10} fill="currentColor" className="text-xs">{s.title}</text>
+                <g
+                  key={s.id}
+                  onClick={() => setIndex(i)}
+                  className="cursor-pointer"
+                >
+                  <circle
+                    cx={x}
+                    cy={y}
+                    r={lit ? 7 : 4}
+                    fill={lit ? "hsl(var(--accent))" : "hsl(var(--muted))"}
+                  />
+                  <text
+                    x={x + 10}
+                    y={y + 4}
+                    fontSize={10}
+                    fill="currentColor"
+                    className="text-xs"
+                  >
+                    {s.title}
+                  </text>
                 </g>
               );
             })}
