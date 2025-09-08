@@ -1,4 +1,5 @@
 import { useGame } from "@/state/game";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ThreeScene from "@/components/presentation/ThreeScene";
 import Stardust from "@/components/ui/Stardust";
