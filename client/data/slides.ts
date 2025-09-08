@@ -6,6 +6,7 @@ export type Slide = {
   bg?: string;
   contentType?: "text" | "video" | "game" | "gallery";
   videoUrl?: string;
+  videoUrls?: string[];
   game?: "rhythm" | "unscramble";
   hotspots?: Array<{
     x: number;
