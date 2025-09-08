@@ -296,8 +296,7 @@ export function SlideViewer() {
         </div>
 
         <div
-          className="absolute inset-0 bg-black/28"
-          style={{ backdropFilter: "blur(2px)" }}
+          className="absolute inset-0 bg-black/60"
         />
 
         <div className="absolute inset-0 p-8 flex items-start">
