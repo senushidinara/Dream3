@@ -354,6 +354,10 @@ export function SlideViewer() {
                         controls
                         src={slide.videoUrl}
                         className="w-full rounded-md shadow-lg"
+                        muted
+                        autoPlay
+                        loop
+                        playsInline
                       />
                     )}
                   </div>
