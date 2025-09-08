@@ -98,7 +98,7 @@ export default function Islands() {
               "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F4b659da8a22e4f58841b21f388be5a09?format=webp&width=1600",
               "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F510711956ce145129c1fb0753e6c5230?format=webp&width=1600",
             ]}
-            filter="brightness(0.92) saturate(1.05)"
+            filter="brightness(1.02) saturate(1.08)"
           />
           <div className="absolute inset-0 p-8 flex items-end">
             <div className="text-white">
