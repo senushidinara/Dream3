@@ -13,6 +13,7 @@ import Gallery from "./pages/Gallery";
 import Library from "./pages/Library";
 import Constellation from "./pages/Constellation";
 import Presentation from "./pages/Presentation";
+import Garden from "./pages/Garden";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { GameProvider } from "@/state/game";
