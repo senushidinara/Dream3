@@ -316,7 +316,7 @@ export function SlideViewer() {
           <button
             key={h.id}
             onClick={() => handleHotspot(h)}
-            className="absolute border border-primary/40 bg-gradient-to-tr from-primary/20 to-accent/10 rounded-full shadow-lg backdrop-blur-sm hover:scale-105 transform transition-all animate-pulse"
+            className="absolute z-10 border border-primary/40 bg-gradient-to-tr from-primary/20 to-accent/10 rounded-full shadow-lg backdrop-blur-sm hover:scale-105 transform transition-all animate-pulse"
             style={{ left: `${h.x}%`, top: `${h.y}%`, width: `${h.w}%`, height: `${h.h}%` }}
             aria-label={`Crystal hotspot ${h.id}`}
           />
