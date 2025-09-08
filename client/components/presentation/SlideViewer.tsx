@@ -96,38 +96,75 @@ export function SlideViewer() {
     return () => el.removeEventListener("mousemove", onMove);
   }, []);
 
-  // ambient sound
+  // ambient sound + effect nodes
   const audioCtxRef = useRef<AudioContext | null>(null);
   const oscRef = useRef<OscillatorNode | null>(null);
   const gainRef = useRef<GainNode | null>(null);
+  const delayRef = useRef<DelayNode | null>(null);
+  const feedbackRef = useRef<GainNode | null>(null);
   const [soundOn, setSoundOn] = useState(false);
+  const [reverbOn, setReverbOn] = useState(false);
+
+  const setupAudio = (withEffect = false) => {
+    if (!audioCtxRef.current) audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const ctx = audioCtxRef.current!;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.value = 220;
+    gain.gain.value = 0.0025;
+
+    if (withEffect) {
+      const delay = ctx.createDelay();
+      delay.delayTime.value = 0.25; // 250ms
+      const feedback = ctx.createGain();
+      feedback.gain.value = 0.4;
+      // Connect: osc -> gain -> delay -> feedback -> delay -> destination (and direct)
+      gain.connect(delay);
+      delay.connect(feedback);
+      feedback.connect(delay);
+      delay.connect(ctx.destination);
+      gain.connect(ctx.destination);
+      delayRef.current = delay;
+      feedbackRef.current = feedback;
+    } else {
+      gain.connect(ctx.destination);
+    }
+
+    osc.connect(gain);
+    osc.start();
+    oscRef.current = osc;
+    gainRef.current = gain;
+    setSoundOn(true);
+  };
+
+  const teardownAudio = () => {
+    oscRef.current?.stop();
+    oscRef.current?.disconnect();
+    gainRef.current?.disconnect();
+    delayRef.current?.disconnect();
+    feedbackRef.current?.disconnect();
+    oscRef.current = null;
+    gainRef.current = null;
+    delayRef.current = null;
+    feedbackRef.current = null;
+    setSoundOn(false);
+  };
 
   const toggleSound = async () => {
-    if (!audioCtxRef.current) {
-      audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
-    }
-    const ctx = audioCtxRef.current!;
-    if (!soundOn) {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = "sine";
-      osc.frequency.value = 220;
-      gain.gain.value = 0.0025;
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      oscRef.current = osc;
-      gainRef.current = gain;
-      setSoundOn(true);
-    } else {
-      oscRef.current?.stop();
-      oscRef.current?.disconnect();
-      gainRef.current?.disconnect();
-      oscRef.current = null;
-      gainRef.current = null;
-      setSoundOn(false);
-    }
+    if (!soundOn) setupAudio(reverbOn);
+    else teardownAudio();
   };
+
+  useEffect(() => {
+    // when reverbOn toggles while sound is playing, rebuild nodes
+    if (!audioCtxRef.current) return;
+    if (!soundOn) return;
+    teardownAudio();
+    setupAudio(reverbOn);
+  }, [reverbOn]);
+
 
   const handleHotspot = (hs: Slide["hotspots"][0]) => {
     if (!hs) return;
