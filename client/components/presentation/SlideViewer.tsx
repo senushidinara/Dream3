@@ -499,7 +499,7 @@ export function SlideViewer() {
                     fill="currentColor"
                     className="text-xs"
                   >
-                    {s.title}
+                    {s.title ? (s.title.length > 18 ? s.title.slice(0, 16) + "…" : s.title) : ""}
                   </text>
                 </g>
               );
