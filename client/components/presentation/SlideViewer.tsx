@@ -66,6 +66,60 @@ export function SlideViewer() {
     }
   };
 
+  // parallax state
+  const [px, setPx] = useState(0);
+  const [py, setPy] = useState(0);
+  const { collected } = useGame();
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const onMove = (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      const nx = (mx / rect.width - 0.5) * 2; // -1..1
+      const ny = (my / rect.height - 0.5) * 2;
+      setPx(nx);
+      setPy(ny);
+    };
+    el.addEventListener("mousemove", onMove);
+    return () => el.removeEventListener("mousemove", onMove);
+  }, []);
+
+  // ambient sound using WebAudio
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const oscRef = useRef<OscillatorNode | null>(null);
+  const gainRef = useRef<GainNode | null>(null);
+  const [soundOn, setSoundOn] = useState(false);
+
+  const toggleSound = async () => {
+    if (!audioCtxRef.current) {
+      audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+    }
+    const ctx = audioCtxRef.current!;
+    if (!soundOn) {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = 220;
+      gain.gain.value = 0.0025;
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      oscRef.current = osc;
+      gainRef.current = gain;
+      setSoundOn(true);
+    } else {
+      oscRef.current?.stop();
+      oscRef.current?.disconnect();
+      gainRef.current?.disconnect();
+      oscRef.current = null;
+      gainRef.current = null;
+      setSoundOn(false);
+    }
+  };
+
   return (
     <div
       ref={containerRef}
@@ -75,10 +129,11 @@ export function SlideViewer() {
         <img
           src={slide.bg}
           alt={slide.title}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transform transition-transform will-change-transform"
+          style={{ transform: `translate3d(${px * 8}px, ${py * 6}px, 0) scale(${1 + Math.abs(px) * 0.02 + Math.abs(py) * 0.02})` }}
         />
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 p-8 flex flex-col justify-between">
+        <div className="absolute inset-0 bg-black/28" style={{ backdropFilter: "blur(2px)" }} />
+        <div className="absolute inset-0 p-8 flex flex-col justify-between pointer-events-none">
           <header>
             <h2 className="text-3xl font-extrabold text-primary">
               {slide.title}
