@@ -213,6 +213,9 @@ export function SlideViewer() {
           </div>
         </div>
         <div className="flex items-center gap-2">
+          <button onClick={toggleSound} className="text-sm px-3 py-1 rounded-md bg-primary/10">
+            {soundOn ? "🔊 Ambient On" : "🔈 Ambient Off"}
+          </button>
           <Link
             to="/islands"
             className="text-sm px-3 py-1 rounded-md bg-primary/20 text-primary"
