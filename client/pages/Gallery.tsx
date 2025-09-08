@@ -1,6 +1,6 @@
 import { RhythmGame } from "@/components/game/RhythmGame";
 import { DreamFragment } from "@/components/game/DreamFragment";
-import { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ThreeScene from "@/components/presentation/ThreeScene";
 import Stardust from "@/components/ui/Stardust";
 
