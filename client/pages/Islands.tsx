@@ -89,18 +89,26 @@ export default function Islands() {
   return (
     <div className="min-h-[calc(100vh-64px)]">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="relative rounded-xl overflow-hidden" style={{ height: 320 }}>
+        <div
+          className="relative rounded-xl overflow-hidden"
+          style={{ height: 320 }}
+        >
           <ThreeScene
             images={[
-              'https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F4b659da8a22e4f58841b21f388be5a09?format=webp&width=1600',
-              'https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F510711956ce145129c1fb0753e6c5230?format=webp&width=1600',
+              "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F4b659da8a22e4f58841b21f388be5a09?format=webp&width=1600",
+              "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F510711956ce145129c1fb0753e6c5230?format=webp&width=1600",
             ]}
             filter="brightness(0.92) saturate(1.05)"
           />
           <div className="absolute inset-0 p-8 flex items-end">
             <div className="text-white">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">Dream Islands</h1>
-              <p className="text-white/85 mt-2 max-w-2xl">Touch a crystal to enter. Solve the riddle to unlock the island and gain a vision shard.</p>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
+                Dream Islands
+              </h1>
+              <p className="text-white/85 mt-2 max-w-2xl">
+                Touch a crystal to enter. Solve the riddle to unlock the island
+                and gain a vision shard.
+              </p>
             </div>
           </div>
         </div>
