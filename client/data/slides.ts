@@ -85,7 +85,7 @@ export const slides: Slide[] = [
     id: "fragments",
     title: "Dream Fragments Collection",
     body: "Hidden across all islands — collect to unlock your Dream Constellation.",
-    bg: "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F8bf82fb537c0431186b162ded994138f?format=webp&width=1600",
+    bg: "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fe45a2631e64b47ae8e8c114df4f07d02?format=webp&width=1600",
     contentType: "text",
     hotspots: [
       { x: 12, y: 40, w: 10, h: 10, action: "collect", id: "frag-frag-1" },
