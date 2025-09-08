@@ -284,15 +284,7 @@ export function SlideViewer() {
       className="relative rounded-lg overflow-hidden border border-border/50 bg-card/60"
     >
       <div className="w-full aspect-[16/9] relative">
-        <img
-          src={slide.bg}
-          alt={slide.title}
-          className="absolute inset-0 w-full h-full object-cover transform transition-transform will-change-transform"
-          style={{
-            transform: `translate3d(${px * 8}px, ${py * 6}px, 0) scale(${1 + Math.abs(px) * 0.02 + Math.abs(py) * 0.02})`,
-            filter: filter,
-          }}
-        />
+        <ThreeScene images={[slide.bg]} px={px} py={py} filter={filter} />
 
         {/* subtle particle overlay / canvas */}
         <div className="pointer-events-none absolute inset-0">
