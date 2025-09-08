@@ -111,6 +111,9 @@ export default function Gallery() {
                     src={v}
                     className="w-full h-full object-cover"
                     muted
+                    autoPlay
+                    loop
+                    playsInline
                     preload="metadata"
                   />
                 </button>
