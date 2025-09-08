@@ -147,8 +147,13 @@
     z-index: 9999;
     padding-bottom: 12px;
     /* stronger, nearly-opaque background to prevent background bleed when scrolling */
-    background-color: rgba(8,6,12,0.96) !important;
+    background-color: rgba(8,6,12,0.98) !important;
     backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    /* avoid GPU transform artifacts that can cause glyph overlap when scrolling */
+    transform: none !important;
+    will-change: auto !important;
+    contain: paint;
     -webkit-font-smoothing: antialiased;
   }
 }
