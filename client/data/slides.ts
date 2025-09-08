@@ -52,7 +52,7 @@ export const slides: Slide[] = [
     id: "islands",
     title: "Unlocking Dream Island Mysteries",
     body: "Discover hidden vision shards and unlock the secrets of each island through exploration and creativity.",
-    bg: "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F8bf82fb537c0431186b162ded994138f?format=webp&width=1600",
+    bg: "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F81a3bef5f3f84a4388de1249f2fc6d07?format=webp&width=1600",
     contentType: "gallery",
     hotspots: [
       { x: 18, y: 12, w: 16, h: 28, action: "collect", id: "frag-island-1" },
