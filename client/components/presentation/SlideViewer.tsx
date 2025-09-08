@@ -286,7 +286,7 @@ export function SlideViewer() {
       className="relative rounded-lg overflow-hidden border border-border/50 bg-card/60"
     >
       <div className="w-full aspect-[16/9] relative">
-        <ThreeScene images={[slide.bg]} px={px} py={py} filter={filter} />
+        <ThreeScene images={slide.images ? slide.images : [slide.bg || '']} px={px} py={py} filter={filter} />
 
         {/* subtle particle overlay / canvas */}
         <div className="pointer-events-none absolute inset-0">
