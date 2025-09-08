@@ -337,7 +337,28 @@ export function SlideViewer() {
         </div>
 
         <div className="flex items-center gap-2">
+          <select
+            onChange={(e) => {
+              const v = e.target.value;
+              if (v === "dim") setFilter("brightness(0.6) contrast(1.05) blur(0px)");
+              if (v === "blur") setFilter("brightness(0.6) contrast(1.02) blur(2px)");
+              if (v === "wash") setFilter("brightness(0.82) saturate(1.15) hue-rotate(10deg)");
+              if (v === "none") setFilter("");
+            }}
+            className="text-sm p-2 rounded bg-muted"
+          >
+            <option value="none">Filter</option>
+            <option value="dim">Dim</option>
+            <option value="blur">Soft Blur</option>
+            <option value="wash">Color Wash</option>
+          </select>
+
+          <button onClick={() => { setParticlesOn((s) => !s); toast({ title: particlesOn ? 'Particles off' : 'Particles on' }); }} className={`text-sm px-3 py-1 rounded-md ${particlesOn ? 'bg-primary/20' : 'bg-primary/10'}`}>Particles</button>
+
+          <button onClick={() => { setReverbOn((r) => !r); toast({ title: reverbOn ? 'Reverb off' : 'Reverb on' }); }} className={`text-sm px-3 py-1 rounded-md ${reverbOn ? 'bg-primary/20' : 'bg-primary/10'}`}>{reverbOn ? 'Reverb On' : 'Reverb Off'}</button>
+
           <button onClick={toggleSound} className="text-sm px-3 py-1 rounded-md bg-primary/10">{soundOn ? "🔊 Ambient On" : "🔈 Ambient Off"}</button>
+
           <Link to="/islands" className="text-sm px-3 py-1 rounded-md bg-primary/20 text-primary">Enter Map</Link>
           <Link to="/gallery" className="text-sm px-3 py-1 rounded-md bg-secondary text-secondary-foreground">Enter Galleries</Link>
         </div>
