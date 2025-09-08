@@ -12,6 +12,7 @@ import Islands from "./pages/Islands";
 import Gallery from "./pages/Gallery";
 import Library from "./pages/Library";
 import Constellation from "./pages/Constellation";
+import Presentation from "./pages/Presentation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { GameProvider } from "@/state/game";
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/library" element={<Library />} />
             <Route path="/constellation" element={<Constellation />} />
+            <Route path="/presentation" element={<Presentation />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
