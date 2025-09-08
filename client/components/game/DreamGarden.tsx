@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import ThreeScene from "@/components/presentation/ThreeScene";
+import Stardust from "@/components/ui/Stardust";
 import { useGame } from "@/state/game";
 import { toast } from "@/components/ui/use-toast";
 
