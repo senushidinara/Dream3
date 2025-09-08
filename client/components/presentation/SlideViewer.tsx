@@ -96,6 +96,68 @@ export function SlideViewer() {
     return () => el.removeEventListener("mousemove", onMove);
   }, []);
 
+  // visual filters and particles
+  const [filter, setFilter] = useState("");
+  const [particlesOn, setParticlesOn] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    let raf = 0;
+    let particles: { x: number; y: number; vx: number; vy: number; r: number; a: number }[] = [];
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d")!;
+    let w = 0;
+    let h = 0;
+    const resize = () => {
+      w = canvas.width = canvas.clientWidth * devicePixelRatio;
+      h = canvas.height = canvas.clientHeight * devicePixelRatio;
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+    };
+
+    const spawn = (n = 60) => {
+      particles = Array.from({ length: n }).map(() => ({
+        x: Math.random() * canvas.clientWidth,
+        y: Math.random() * canvas.clientHeight,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: -Math.random() * 0.3 - 0.05,
+        r: Math.random() * 3 + 1,
+        a: Math.random() * 0.6 + 0.2,
+      }));
+    };
+
+    const loop = () => {
+      if (!particlesOn) return;
+      ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.y < -10) p.y = canvas.clientHeight + 10;
+        if (p.x < -10) p.x = canvas.clientWidth + 10;
+        if (p.x > canvas.clientWidth + 10) p.x = -10;
+        ctx.beginPath();
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 8);
+        g.addColorStop(0, `rgba(255,255,255,${p.a})`);
+        g.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.fillStyle = g as unknown as string;
+        ctx.fillRect(p.x - p.r * 8, p.y - p.r * 8, p.r * 16, p.r * 16);
+      });
+      raf = requestAnimationFrame(loop);
+    };
+
+    if (particlesOn) {
+      resize();
+      spawn(80);
+      raf = requestAnimationFrame(loop);
+      window.addEventListener("resize", resize);
+    }
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
+  }, [particlesOn]);
+
   // ambient sound + effect nodes
   const audioCtxRef = useRef<AudioContext | null>(null);
   const oscRef = useRef<OscillatorNode | null>(null);
