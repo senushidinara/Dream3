@@ -313,7 +313,7 @@ export function SlideViewer() {
             <header>
               <h2
                 className="quest-title text-primary"
-                style={{ fontSize: "clamp(28px, 4.5vw, 48px)", margin: 0 }}
+                style={{ fontSize: "clamp(22px, 3.2vw, 40px)", margin: 0 }}
               >
                 {slide.title}
               </h2>
