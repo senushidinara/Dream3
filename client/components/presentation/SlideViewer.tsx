@@ -82,6 +82,8 @@ export function SlideViewer() {
   // parallax
   const [px, setPx] = useState(0);
   const [py, setPy] = useState(0);
+  // timeline hover state to prevent label overlap
+  const [hovered, setHovered] = useState<number | null>(null);
 
   useEffect(() => {
     const el = containerRef.current;
