@@ -46,7 +46,7 @@ export default function Constellation() {
               "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F6c64a7bebc8a44c4803722bf6fcfcf77?format=webp&width=1600",
               "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F4a833102f3c346cd8ead3ce79547ebd5?format=webp&width=1600",
             ]}
-            filter="brightness(0.9) saturate(1.05)"
+            filter="brightness(1.02) saturate(1.08)"
           />
           <div className="absolute inset-0">
             <Stardust intensity={26} color="200,220,255" />
