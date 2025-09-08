@@ -265,7 +265,7 @@ export function SlideViewer() {
           src={slide.bg}
           alt={slide.title}
           className="absolute inset-0 w-full h-full object-cover transform transition-transform will-change-transform"
-          style={{ transform: `translate3d(${px * 8}px, ${py * 6}px, 0) scale(${1 + Math.abs(px) * 0.02 + Math.abs(py) * 0.02})` }}
+          style={{ transform: `translate3d(${px * 8}px, ${py * 6}px, 0) scale(${1 + Math.abs(px) * 0.02 + Math.abs(py) * 0.02})`, filter: filter }}
         />
 
         {/* subtle particle overlay */}
