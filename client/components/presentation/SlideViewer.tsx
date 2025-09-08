@@ -89,6 +89,9 @@ export function SlideViewer() {
   // timeline hover state to prevent label overlap
   const [hovered, setHovered] = useState<number | null>(null);
 
+  // slide image primary index map to allow cycling images per slide
+  const [slideImageIndexMap, setSlideImageIndexMap] = useState<Record<string, number>>({});
+
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
