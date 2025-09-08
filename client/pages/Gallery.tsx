@@ -62,7 +62,7 @@ export default function Gallery() {
               "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fc4e7bcb3c490419da0e26370418c5825?format=webp&width=1600",
               "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F4b5244b77f024688823c292f89f8b43d?format=webp&width=1600",
             ]}
-            filter="brightness(0.92) saturate(1.05)"
+            filter="brightness(1.02) saturate(1.08)"
           />
           <div className="absolute inset-0">
             <Stardust intensity={36} color="255,220,210" />
