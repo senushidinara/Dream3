@@ -64,8 +64,11 @@ export const slides: Slide[] = [
     body: "Music, art, and science exhibits — interact to unlock rooms and earn vision shards.",
     bg: "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fe45a2631e64b47ae8e8c114df4f07d02?format=webp&width=1600",
     contentType: "video",
-    videoUrl:
+    videoUrls: [
       "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F0cd9c53a68b04d1aa7244ca03aca7ad3?alt=media&token=79879370-e6bd-4ec9-b89e-6ee6e568fef6&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+      "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fe252d37f98394c0b946fbea88565b341?alt=media&token=e459423a-169f-4b87-87e1-02cf940fc0d8&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+      "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fc938dafc768e4d2fae4f107b3c7d7b5e?alt=media&token=7ccb6e32-cd0d-4ad8-a556-7295f10c5d08&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+    ],
   },
   {
     id: "library",
