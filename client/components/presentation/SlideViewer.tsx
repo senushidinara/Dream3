@@ -278,14 +278,14 @@ export function SlideViewer() {
 
         <div className="absolute inset-0 p-8 flex items-start">
           {/* Left info panel to ensure contrast and readability */}
-          <div className="pointer-events-auto max-w-md w-full bg-[rgba(8,6,12,0.92)] backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-2xl border border-primary/10 z-50" style={{ minWidth: 320, maxWidth: 520, maxHeight: '62vh', overflowY: 'auto' }}>
+          <div className="pointer-events-auto max-w-md w-full bg-[rgba(8,6,12,0.92)] backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-2xl border border-primary/10 z-50 quest-panel" style={{ minWidth: 320, maxWidth: 520, maxHeight: '62vh', overflowY: 'auto' }}>
             <header>
-              <h2 className="font-extrabold text-primary" style={{ fontSize: 'clamp(28px, 4.5vw, 48px)', lineHeight: 1.06, letterSpacing: '0.2px', margin: 0, wordBreak: 'normal', overflowWrap: 'break-word' }}>{slide.title}</h2>
+              <h2 className="quest-title text-primary" style={{ fontSize: 'clamp(28px, 4.5vw, 48px)', margin: 0 }}>{slide.title}</h2>
               {slide.subtitle && <p className="mt-2 text-sm text-muted-foreground" style={{ lineHeight: 1.35, opacity: 0.95, margin: 0 }}>{slide.subtitle}</p>}
             </header>
 
             <div className="mt-4">
-              <p className="text-sm md:text-base text-foreground/95" style={{ lineHeight: 1.55, letterSpacing: '0.2px', textShadow: 'none', overflowWrap: 'break-word', hyphens: 'auto', margin: 0 }}>{slide.body}</p>
+              <p className="quest-body text-foreground/95" style={{ margin: 0 }}>{slide.body}</p>
 
               {slide.contentType === "video" && (slide.videoUrls || slide.videoUrl) && (
                 <div className="mt-4">
