@@ -24,7 +24,7 @@ export const slides: Slide[] = [
     title: "The Mind Palace Quest",
     subtitle: "Worlds of Imagination",
     body: "Explore The Mind Palace for self-discovery and imaginative adventures. Hidden treasures, puzzles, and dream fragments await.",
-    bg: "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F8bf82fb537c0431186b162ded994138f?format=webp&width=1600",
+    bg: "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Ff27c5e1586d04e24a3fdf26ce4e5cd93?format=webp&width=1600",
     contentType: "text",
     hotspots: [
       { x: 82, y: 8, w: 10, h: 12, action: "collect", id: "frag-cover-1" },
