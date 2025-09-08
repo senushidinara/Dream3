@@ -6,7 +6,7 @@ const nav = [
   { to: "/gallery", label: "Gallery" },
   { to: "/library", label: "Library" },
   { to: "/constellation", label: "Constellation" },
-  { to: "/presentation", label: "Presentation" },
+  { to: "/presentation", label: "Quest" },
 ];
 
 export function Header() {
