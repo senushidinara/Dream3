@@ -6,6 +6,7 @@ import { RhythmGame } from "@/components/game/RhythmGame";
 import { WordUnscramble } from "@/components/game/WordUnscramble";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
+import ThreeScene from "@/components/presentation/ThreeScene";
 
 function VideoGallery({ urls }: { urls: string[] }) {
   const [i, setI] = useState(0);
