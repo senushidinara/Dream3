@@ -87,14 +87,20 @@ export default function Islands() {
   return (
     <div className="min-h-[calc(100vh-64px)]">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="page-hero rounded-xl overflow-hidden" style={{ backgroundImage: `url('https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Ffc265a13f8d141d69d1e34fa87b795e7?format=webp&width=1600')`, height: 320 }}>
+        <div
+          className="page-hero rounded-xl overflow-hidden"
+          style={{
+            backgroundImage: `url('https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Ffc265a13f8d141d69d1e34fa87b795e7?format=webp&width=1600')`,
+            height: 320,
+          }}
+        >
           <div className="p-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
               Dream Islands
             </h1>
             <p className="text-white/85 mt-2 max-w-2xl">
-              Touch a crystal to enter. Solve the riddle to unlock the island and
-              gain a vision shard.
+              Touch a crystal to enter. Solve the riddle to unlock the island
+              and gain a vision shard.
             </p>
           </div>
         </div>

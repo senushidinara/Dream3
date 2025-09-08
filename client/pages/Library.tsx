@@ -42,10 +42,21 @@ export default function Library() {
   return (
     <div className="min-h-[calc(100vh-64px)]">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="page-hero rounded-xl overflow-hidden" style={{ backgroundImage: `url('https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fb964bc979b7949f6b16bbc771d0dda43?format=webp&width=1600')`, height: 320 }}>
+        <div
+          className="page-hero rounded-xl overflow-hidden"
+          style={{
+            backgroundImage: `url('https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fb964bc979b7949f6b16bbc771d0dda43?format=webp&width=1600')`,
+            height: 320,
+          }}
+        >
           <div className="p-8">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">Memory Library</h1>
-            <p className="text-white/85 mt-2 max-w-2xl">Solve puzzles woven from your memories. Some tomes require fragments from elsewhere.</p>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+              Memory Library
+            </h1>
+            <p className="text-white/85 mt-2 max-w-2xl">
+              Solve puzzles woven from your memories. Some tomes require
+              fragments from elsewhere.
+            </p>
           </div>
         </div>
 

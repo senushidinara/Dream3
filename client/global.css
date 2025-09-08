@@ -128,8 +128,8 @@
     margin: 0 0 0.25rem 0;
     display: block;
     /* subtle stroke/shadow to improve legibility over textured backgrounds */
-    -webkit-text-stroke: 0.25px rgba(0,0,0,0.15);
-    text-shadow: 0 2px 6px rgba(0,0,0,0.55);
+    -webkit-text-stroke: 0.25px rgba(0, 0, 0, 0.15);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
   }
 
   .quest-body {
@@ -138,7 +138,7 @@
     hyphens: auto;
     overflow-wrap: break-word;
     margin: 0;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
   }
 
   /* ensure panels render above background and avoid subpixel overlap */
@@ -147,7 +147,7 @@
     z-index: 9999;
     padding-bottom: 12px;
     /* stronger, nearly-opaque background to prevent background bleed when scrolling */
-    background-color: rgba(8,6,12,0.98) !important;
+    background-color: rgba(8, 6, 12, 0.98) !important;
     backface-visibility: hidden;
     -webkit-font-smoothing: antialiased;
     /* avoid GPU transform artifacts that can cause glyph overlap when scrolling */
@@ -170,12 +170,24 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.75));
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.75)
+    );
     pointer-events: none;
   }
 
   /* font rendering improvements site-wide */
-  h1,h2,h3,h4,h5,h6,p,li,span {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  span {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;

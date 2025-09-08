@@ -1,7 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-export default function ThreeScene({ images, filter = "", px = 0, py = 0 }: { images: string[]; filter?: string; px?: number; py?: number }) {
+export default function ThreeScene({
+  images,
+  filter = "",
+  px = 0,
+  py = 0,
+}: {
+  images: string[];
+  filter?: string;
+  px?: number;
+  py?: number;
+}) {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const frameRef = useRef<number | null>(null);
   const pxRef = useRef(px);
@@ -113,9 +123,16 @@ export default function ThreeScene({ images, filter = "", px = 0, py = 0 }: { im
       });
       renderer.dispose();
       // remove canvas
-      if (renderer.domElement && renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement);
+      if (renderer.domElement && renderer.domElement.parentNode)
+        renderer.domElement.parentNode.removeChild(renderer.domElement);
     };
   }, [images.join("||")]);
 
-  return <div ref={mountRef} className="absolute inset-0 w-full h-full" style={{ filter }} />;
+  return (
+    <div
+      ref={mountRef}
+      className="absolute inset-0 w-full h-full"
+      style={{ filter }}
+    />
+  );
 }
