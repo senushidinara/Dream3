@@ -96,9 +96,9 @@ export function SlideViewer() {
           <button
             key={h.id}
             onClick={() => handleHotspot(h)}
-            className="absolute border border-primary/40 bg-primary/10 rounded-md"
+            className="absolute border border-primary/40 bg-gradient-to-tr from-primary/20 to-accent/10 rounded-full shadow-lg backdrop-blur-sm hover:scale-105 transform transition-all animate-pulse"
             style={{ left: `${h.x}%`, top: `${h.y}%`, width: `${h.w}%`, height: `${h.h}%` }}
-            aria-label={`Hotspot ${h.id}`}
+            aria-label={`Crystal hotspot ${h.id}`}
           />
         ))}
 
@@ -113,13 +113,13 @@ export function SlideViewer() {
 
       <div className="p-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <button onClick={() => go(-1)} className="px-3 py-1.5 rounded-md bg-muted">← Prev</button>
-          <button onClick={() => go(1)} className="px-3 py-1.5 rounded-md bg-muted">Next →</button>
-          <div className="ml-4 text-sm text-muted-foreground">Slide {index + 1} / {SLIDES.length}</div>
+          <button onClick={() => go(-1)} className="px-3 py-1.5 rounded-md bg-gradient-to-br from-muted to-muted/80">← Previous Realm</button>
+          <button onClick={() => go(1)} className="px-3 py-1.5 rounded-md bg-gradient-to-br from-muted to-muted/80">Next Realm →</button>
+          <div className="ml-4 text-sm text-muted-foreground">Realm {index + 1} of {SLIDES.length}</div>
         </div>
         <div className="flex items-center gap-2">
-          <Link to="/islands" className="text-sm px-3 py-1 rounded-md bg-primary/20 text-primary">Open Map</Link>
-          <Link to="/gallery" className="text-sm px-3 py-1 rounded-md bg-secondary text-secondary-foreground">Galleries</Link>
+          <Link to="/islands" className="text-sm px-3 py-1 rounded-md bg-primary/20 text-primary">Enter Map</Link>
+          <Link to="/gallery" className="text-sm px-3 py-1 rounded-md bg-secondary text-secondary-foreground">Enter Galleries</Link>
         </div>
       </div>
 
