@@ -278,14 +278,14 @@ export function SlideViewer() {
 
         <div className="absolute inset-0 p-8 flex items-start">
           {/* Left info panel to ensure contrast and readability */}
-          <div className="pointer-events-auto max-w-md w-full bg-[rgba(10,8,14,0.78)] backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-primary/8 z-20">
+          <div className="pointer-events-auto max-w-md w-full bg-[rgba(8,6,12,0.86)] backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-primary/10 z-50" style={{ minWidth: 320 }}>
             <header>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary leading-snug" style={{ lineHeight: 1.12, letterSpacing: "0.2px" }}>{slide.title}</h2>
-              {slide.subtitle && <p className="mt-2 text-sm text-muted-foreground" style={{ lineHeight: 1.3 }}>{slide.subtitle}</p>}
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary leading-tight" style={{ lineHeight: 1.08, letterSpacing: "0.3px", wordBreak: 'break-word' }}>{slide.title}</h2>
+              {slide.subtitle && <p className="mt-2 text-sm text-muted-foreground" style={{ lineHeight: 1.35, opacity: 0.95 }}>{slide.subtitle}</p>}
             </header>
 
             <div className="mt-4">
-              <p className="text-base md:text-lg text-foreground/95" style={{ lineHeight: 1.45, letterSpacing: "0.25px", textShadow: "none", hyphens: "none" }}>{slide.body}</p>
+              <p className="text-sm md:text-base text-foreground/95" style={{ lineHeight: 1.6, letterSpacing: "0.3px", textShadow: "none", overflowWrap: 'break-word', hyphens: 'auto' }}>{slide.body}</p>
 
               {slide.contentType === "video" && (slide.videoUrls || slide.videoUrl) && (
                 <div className="mt-4">
