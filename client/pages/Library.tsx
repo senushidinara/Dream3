@@ -81,7 +81,7 @@ export default function Library() {
               "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fb964bc979b7949f6b16bbc771d0dda43?format=webp&width=1600",
               "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F30706a87523649f5beef624d82d532f8?format=webp&width=1600",
             ]}
-            filter="brightness(0.92) saturate(1.02)"
+            filter="brightness(1.02) saturate(1.08)"
           />
           <div className="absolute inset-0">
             <Stardust intensity={28} color="220,230,255" />
