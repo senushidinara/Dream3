@@ -234,9 +234,17 @@ export default function DreamGarden({
               <button
                 onClick={() => {
                   // pick first collected but unplaced blossom
-                  const candidate = blossoms.map(b => b.id).find(id => collected[`frag-garden-${id}`] && !placed.includes(id));
+                  const candidate = blossoms
+                    .map((b) => b.id)
+                    .find(
+                      (id) =>
+                        collected[`frag-garden-${id}`] && !placed.includes(id),
+                    );
                   if (!candidate) {
-                    toast({ title: 'No blossom', description: 'Collect a blossom first to place it.' });
+                    toast({
+                      title: "No blossom",
+                      description: "Collect a blossom first to place it.",
+                    });
                     return;
                   }
                   placeBlossomInGate(candidate);
