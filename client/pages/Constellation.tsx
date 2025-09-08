@@ -26,6 +26,7 @@ export default function Constellation() {
   const { fragments, shards, keys } = useGame();
   const power = fragments + shards + keys; // simple aggregate
   const navigate = useNavigate();
+  const [hovered, setHovered] = useState<string | null>(null);
 
   const goTo = (id: string) => {
     if (id === "islands") navigate("/islands");
