@@ -146,13 +146,13 @@ export function SlideViewer() {
 
           <div className="max-w-2xl">
             <p className="text-lg text-foreground/90">{slide.body}</p>
-            {slide.contentType === "video" && slide.videoUrl && (
+            {slide.contentType === "video" && (slide.videoUrls || slide.videoUrl) && (
               <div className="mt-4">
-                <video
-                  controls
-                  src={slide.videoUrl}
-                  className="w-full rounded-md shadow-lg"
-                />
+                {slide.videoUrls ? (
+                  <VideoGallery urls={slide.videoUrls} />
+                ) : (
+                  <video controls src={slide.videoUrl} className="w-full rounded-md shadow-lg" />
+                )}
               </div>
             )}
             {slide.contentType === "game" && slide.game === "rhythm" && (
