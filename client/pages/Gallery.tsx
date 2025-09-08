@@ -142,6 +142,9 @@ export default function Gallery() {
             src={activeVideo}
             controls
             autoPlay
+            muted
+            loop
+            playsInline
             className="max-w-[80%] max-h-[80%] rounded shadow-2xl"
           />
         </div>
