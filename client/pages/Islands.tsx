@@ -1,25 +1,68 @@
 import { useState } from "react";
 import { DreamFragment } from "@/components/game/DreamFragment";
 import { useGame } from "@/state/game";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const ISLANDS = [
-  { id: "island-1", name: "Clarity Cay", riddle: "I speak without a mouth and hear without ears. What am I?", answer: "echo" },
-  { id: "island-2", name: "Courage Cove", riddle: "What can fill a room but takes up no space?", answer: "light" },
-  { id: "island-3", name: "Wonder Wharf", riddle: "What has keys but can't open locks?", answer: "piano" },
-  { id: "island-4", name: "Focus Fjord", riddle: "The more of this there is, the less you see. What is it?", answer: "darkness" },
-  { id: "island-5", name: "Joy Junction", riddle: "What is always in front of you but can’t be seen?", answer: "future" },
-  { id: "island-6", name: "Vision Vale", riddle: "What runs but never walks?", answer: "water" },
+  {
+    id: "island-1",
+    name: "Clarity Cay",
+    riddle: "I speak without a mouth and hear without ears. What am I?",
+    answer: "echo",
+  },
+  {
+    id: "island-2",
+    name: "Courage Cove",
+    riddle: "What can fill a room but takes up no space?",
+    answer: "light",
+  },
+  {
+    id: "island-3",
+    name: "Wonder Wharf",
+    riddle: "What has keys but can't open locks?",
+    answer: "piano",
+  },
+  {
+    id: "island-4",
+    name: "Focus Fjord",
+    riddle: "The more of this there is, the less you see. What is it?",
+    answer: "darkness",
+  },
+  {
+    id: "island-5",
+    name: "Joy Junction",
+    riddle: "What is always in front of you but can’t be seen?",
+    answer: "future",
+  },
+  {
+    id: "island-6",
+    name: "Vision Vale",
+    riddle: "What runs but never walks?",
+    answer: "water",
+  },
 ];
 
 function Crystal({ unlocked }: { unlocked: boolean }) {
   return (
     <div className="relative w-20 h-20">
-      <div className={`absolute inset-0 ${unlocked ? "opacity-100" : "opacity-60"}`}>
+      <div
+        className={`absolute inset-0 ${unlocked ? "opacity-100" : "opacity-60"}`}
+      >
         <div className="absolute inset-0 rounded-lg rotate-45 bg-gradient-to-br from-primary to-accent shadow-xl" />
         <div className="absolute -inset-2 blur-2xl bg-primary/30" />
       </div>
-      {!unlocked && <div className="absolute inset-0 grid place-items-center text-xs font-semibold">Locked</div>}
+      {!unlocked && (
+        <div className="absolute inset-0 grid place-items-center text-xs font-semibold">
+          Locked
+        </div>
+      )}
     </div>
   );
 }
@@ -44,17 +87,31 @@ export default function Islands() {
   return (
     <div className="min-h-[calc(100vh-64px)] bg-gradient-to-b from-background to-background/40">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <h1 className="text-3xl font-extrabold tracking-tight">Dream Islands</h1>
-        <p className="text-muted-foreground mt-2">Touch a crystal to enter. Solve the riddle to unlock the island and gain a vision shard.</p>
+        <h1 className="text-3xl font-extrabold tracking-tight">
+          Dream Islands
+        </h1>
+        <p className="text-muted-foreground mt-2">
+          Touch a crystal to enter. Solve the riddle to unlock the island and
+          gain a vision shard.
+        </p>
 
         <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
           {ISLANDS.map((i) => (
-            <div key={i.id} className="group relative rounded-xl border border-border/50 p-4 bg-card/60 grid place-items-center">
-              <button onClick={() => setOpenId(i.id)} className="grid place-items-center">
+            <div
+              key={i.id}
+              className="group relative rounded-xl border border-border/50 p-4 bg-card/60 grid place-items-center"
+            >
+              <button
+                onClick={() => setOpenId(i.id)}
+                className="grid place-items-center"
+              >
                 <Crystal unlocked={!!unlockedIslands[i.id]} />
                 <p className="mt-3 text-sm font-medium">{i.name}</p>
               </button>
-              <DreamFragment id={`frag-${i.id}`} className="absolute -top-2 -right-2" />
+              <DreamFragment
+                id={`frag-${i.id}`}
+                className="absolute -top-2 -right-2"
+              />
             </div>
           ))}
         </div>
@@ -76,7 +133,12 @@ export default function Islands() {
               placeholder="Your answer"
               className="flex-1 px-3 py-2 rounded-md bg-background border focus:outline-none focus:ring-2 focus:ring-ring"
             />
-            <button onClick={submit} className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:opacity-90">Unlock</button>
+            <button
+              onClick={submit}
+              className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:opacity-90"
+            >
+              Unlock
+            </button>
           </div>
         </DialogContent>
       </Dialog>

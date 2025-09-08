@@ -1,7 +1,13 @@
 import { useGame } from "@/state/game";
 import { useMemo, useState } from "react";
 
-export function DreamFragment({ id, className = "" }: { id: string; className?: string }) {
+export function DreamFragment({
+  id,
+  className = "",
+}: {
+  id: string;
+  className?: string;
+}) {
   const { collectFragment, collected } = useGame();
   const [burst, setBurst] = useState(false);
   const isCollected = useMemo(() => !!collected[id], [collected, id]);
@@ -17,7 +23,9 @@ export function DreamFragment({ id, className = "" }: { id: string; className?: 
       }}
       className={
         "relative grid place-items-center w-8 h-8 rounded-full " +
-        (isCollected ? "opacity-40 cursor-default " : "cursor-pointer hover:scale-110 ") +
+        (isCollected
+          ? "opacity-40 cursor-default "
+          : "cursor-pointer hover:scale-110 ") +
         "transition " +
         className
       }

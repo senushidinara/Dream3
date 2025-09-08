@@ -17,9 +17,13 @@ export function Header() {
         <Link to="/" className="group inline-flex items-center gap-2">
           <span className="relative grid place-items-center w-8 h-8">
             <span className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary via-accent to-secondary blur-sm opacity-80 group-hover:opacity-100 transition" />
-            <span className="relative rounded-full bg-background/70 border border-border w-7 h-7 grid place-items-center text-primary">✦</span>
+            <span className="relative rounded-full bg-background/70 border border-border w-7 h-7 grid place-items-center text-primary">
+              ✦
+            </span>
           </span>
-          <span className="font-extrabold tracking-tight text-lg">The Mind Palace</span>
+          <span className="font-extrabold tracking-tight text-lg">
+            The Mind Palace
+          </span>
         </Link>
         <nav className="hidden md:flex items-center gap-2">
           {nav.map((n) => (

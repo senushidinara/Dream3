@@ -69,27 +69,49 @@ export function RhythmGame({ onWin }: { onWin?: () => void }) {
       <div className="flex items-center justify-between gap-4">
         <div>
           <h4 className="font-semibold">Violin Rhythm</h4>
-          <p className="text-sm text-muted-foreground">Press J or Space on the pulse. Score 6 to win a vision shard.</p>
+          <p className="text-sm text-muted-foreground">
+            Press J or Space on the pulse. Score 6 to win a vision shard.
+          </p>
         </div>
         {!active ? (
-          <button onClick={start} className="px-3 py-1.5 rounded-md bg-primary/20 text-primary hover:bg-primary/30 transition">Start</button>
+          <button
+            onClick={start}
+            className="px-3 py-1.5 rounded-md bg-primary/20 text-primary hover:bg-primary/30 transition"
+          >
+            Start
+          </button>
         ) : (
-          <button onClick={stop} className="px-3 py-1.5 rounded-md bg-muted text-foreground hover:bg-muted/80 transition">Stop</button>
+          <button
+            onClick={stop}
+            className="px-3 py-1.5 rounded-md bg-muted text-foreground hover:bg-muted/80 transition"
+          >
+            Stop
+          </button>
         )}
       </div>
       <div className="mt-6 flex items-center gap-4">
         <div className="relative w-24 h-24 grid place-items-center">
-          <span className="absolute inset-0 rounded-full" style={{ boxShadow: `0 0 40px 10px hsl(var(--accent)/${glow})` }} />
-          <span className="relative w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent grid place-items-center text-2xl font-bold">♪</span>
+          <span
+            className="absolute inset-0 rounded-full"
+            style={{ boxShadow: `0 0 40px 10px hsl(var(--accent)/${glow})` }}
+          />
+          <span className="relative w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent grid place-items-center text-2xl font-bold">
+            ♪
+          </span>
         </div>
         <div className="flex-1">
           <div className="h-2 w-full rounded bg-muted overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-primary to-accent" style={{ width: `${Math.min(score / 6, 1) * 100}%` }} />
+            <div
+              className="h-full bg-gradient-to-r from-primary to-accent"
+              style={{ width: `${Math.min(score / 6, 1) * 100}%` }}
+            />
           </div>
           <p className="mt-2 text-sm">Score: {score} / 6</p>
         </div>
       </div>
-      <p className="mt-3 text-xs text-muted-foreground">Tip: Feel the pulse; tap just as it glows brightest.</p>
+      <p className="mt-3 text-xs text-muted-foreground">
+        Tip: Feel the pulse; tap just as it glows brightest.
+      </p>
     </div>
   );
 }

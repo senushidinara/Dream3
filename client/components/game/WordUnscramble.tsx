@@ -20,9 +20,13 @@ export function WordUnscramble({ answer }: { answer: string }) {
   return (
     <div className="rounded-xl border border-border/50 p-4 bg-card/60">
       <h4 className="font-semibold">Memory Puzzle</h4>
-      <p className="text-sm text-muted-foreground">Unscramble the word to unlock a memory key.</p>
+      <p className="text-sm text-muted-foreground">
+        Unscramble the word to unlock a memory key.
+      </p>
       <div className="mt-4 flex items-center gap-2">
-        <div className="px-3 py-1.5 rounded bg-muted/70 font-mono tracking-widest text-lg">{scrambled}</div>
+        <div className="px-3 py-1.5 rounded bg-muted/70 font-mono tracking-widest text-lg">
+          {scrambled}
+        </div>
         <input
           className="flex-1 px-3 py-2 rounded-md bg-background border focus:outline-none focus:ring-2 focus:ring-ring"
           placeholder="Your answer"
@@ -41,7 +45,11 @@ export function WordUnscramble({ answer }: { answer: string }) {
           Unlock
         </button>
       </div>
-      {won && <p className="mt-3 text-sm text-primary">Unlocked! You gained a Memory Key.</p>}
+      {won && (
+        <p className="mt-3 text-sm text-primary">
+          Unlocked! You gained a Memory Key.
+        </p>
+      )}
     </div>
   );
 }
