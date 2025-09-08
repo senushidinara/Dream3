@@ -17,6 +17,10 @@ function VideoGallery({ urls }: { urls: string[] }) {
         controls
         src={urls[i]}
         className="w-full rounded-md shadow-lg h-64 object-cover bg-black"
+        muted
+        autoPlay
+        loop
+        playsInline
       />
       <div className="mt-2 flex gap-2">
         {urls.map((u, idx) => (
