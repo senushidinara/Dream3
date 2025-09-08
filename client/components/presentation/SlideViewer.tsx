@@ -268,9 +268,10 @@ export function SlideViewer() {
           style={{ transform: `translate3d(${px * 8}px, ${py * 6}px, 0) scale(${1 + Math.abs(px) * 0.02 + Math.abs(py) * 0.02})`, filter: filter }}
         />
 
-        {/* subtle particle overlay */}
+        {/* subtle particle overlay / canvas */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.02),transparent_10%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.02),transparent_10%)]" />
+          <canvas ref={canvasRef} className={`absolute inset-0 w-full h-full ${particlesOn ? "opacity-100" : "opacity-0"}`} />
         </div>
 
         <div className="absolute inset-0 bg-black/28" style={{ backdropFilter: "blur(2px)" }} />
