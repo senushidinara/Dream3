@@ -12,11 +12,35 @@ export function DreamFragment({
   const [burst, setBurst] = useState(false);
   const isCollected = useMemo(() => !!collected[id], [collected, id]);
 
+  const playChime = () => {
+    try {
+      const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = "sine";
+      o.frequency.value = 880;
+      g.gain.value = 0.0001;
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start();
+      // envelope
+      g.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + 0.35);
+      setTimeout(() => {
+        o.stop();
+        ctx.close();
+      }, 400);
+    } catch (e) {
+      // ignore
+    }
+  };
+
   return (
     <button
       aria-label="Dream Fragment"
       onClick={() => {
         if (isCollected) return;
+        playChime();
         setBurst(true);
         collectFragment(id);
         setTimeout(() => setBurst(false), 600);
