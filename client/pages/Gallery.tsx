@@ -4,55 +4,81 @@ import React, { useState, useEffect, useRef } from "react";
 import ThreeScene from "@/components/presentation/ThreeScene";
 import Stardust from "@/components/ui/Stardust";
 
-function ColorRevealNew(){
+function ColorRevealNew() {
   const imgRef = React.useRef<HTMLImageElement | null>(null);
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const [revealedCount, setRevealedCount] = useState(0);
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     const canvas = canvasRef.current!;
     const img = imgRef.current!;
-    if(!canvas||!img) return;
-    const ctx = canvas.getContext('2d')!;
-    const resize = ()=>{
+    if (!canvas || !img) return;
+    const ctx = canvas.getContext("2d")!;
+    const resize = () => {
       canvas.width = canvas.clientWidth * devicePixelRatio;
       canvas.height = canvas.clientHeight * devicePixelRatio;
-      ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
-      ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
-      ctx.drawImage(img,0,0,canvas.clientWidth,canvas.clientHeight);
-      ctx.fillStyle='rgba(0,0,0,0.86)';
-      ctx.fillRect(0,0,canvas.clientWidth,canvas.clientHeight);
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+      ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+      ctx.drawImage(img, 0, 0, canvas.clientWidth, canvas.clientHeight);
+      ctx.fillStyle = "rgba(0,0,0,0.86)";
+      ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
     };
     img.onload = resize;
     resize();
-    window.addEventListener('resize', resize);
-    return ()=>window.removeEventListener('resize', resize);
-  },[]);
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
 
-  const reveal = (x:number,y:number)=>{
-    const canvas = canvasRef.current!; const ctx = canvas.getContext('2d')!;
-    const r = Math.max(32, Math.min(80, canvas.clientWidth*0.06));
-    ctx.globalCompositeOperation='destination-out';
-    const grd = ctx.createRadialGradient(x,y,0,x,y,r);
-    grd.addColorStop(0,'rgba(0,0,0,1)'); grd.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle = grd as any; ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
-    ctx.globalCompositeOperation='source-over';
-    setRevealedCount(c=>c+1);
+  const reveal = (x: number, y: number) => {
+    const canvas = canvasRef.current!;
+    const ctx = canvas.getContext("2d")!;
+    const r = Math.max(32, Math.min(80, canvas.clientWidth * 0.06));
+    ctx.globalCompositeOperation = "destination-out";
+    const grd = ctx.createRadialGradient(x, y, 0, x, y, r);
+    grd.addColorStop(0, "rgba(0,0,0,1)");
+    grd.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = grd as any;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalCompositeOperation = "source-over";
+    setRevealedCount((c) => c + 1);
   };
 
   return (
     <div className="rounded-xl border border-border/50 p-4 bg-card/60">
       <h4 className="font-semibold">Canvas Reveal</h4>
-      <p className="text-sm text-muted-foreground">Click or tap the canvas to reveal parts of the painting. Reveal 6 spots to finish.</p>
+      <p className="text-sm text-muted-foreground">
+        Click or tap the canvas to reveal parts of the painting. Reveal 6 spots
+        to finish.
+      </p>
       <div className="mt-4 grid grid-cols-5 gap-4 items-center">
         <div className="col-span-4 relative">
           <div className="aspect-[16/9] rounded-lg overflow-hidden border bg-black relative">
-            <img ref={imgRef} src="https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F8a3edb97228b4bacb141c98b664026a4?format=webp&width=1200" alt="canvas" className="absolute inset-0 w-full h-full object-cover"/>
-            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" onClick={(e)=>{const rect=(e.target as HTMLCanvasElement).getBoundingClientRect(); const x=e.clientX-rect.left; const y=e.clientY-rect.top; reveal(x,y);}} />
+            <img
+              ref={imgRef}
+              src="https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F8a3edb97228b4bacb141c98b664026a4?format=webp&width=1200"
+              alt="canvas"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <canvas
+              ref={canvasRef}
+              className="absolute inset-0 w-full h-full"
+              onClick={(e) => {
+                const rect = (
+                  e.target as HTMLCanvasElement
+                ).getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                reveal(x, y);
+              }}
+            />
           </div>
         </div>
         <div className="col-span-1 grid gap-3">
-          <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-primary via-accent to-secondary shadow-lg grid place-items-center text-white font-bold">Orb</div>
+          <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-primary via-accent to-secondary shadow-lg grid place-items-center text-white font-bold">
+            Orb
+          </div>
           <div className="text-xs text-primary">Reveals: {revealedCount}</div>
         </div>
       </div>
@@ -96,14 +122,16 @@ function ColorReveal() {
   );
 }
 
-const VIDEO_ASSETS = Array.from(new Set([
-  "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F692d5f21dc4b4bb39648a8b119e61a53?alt=media&token=cfe784bc-da0e-4bf4-b4b3-8b7651137253&apiKey=dc3782de61224ee6afee73d63ac0f50c",
-  "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F26236c4d94594f8497d9c42174c58fa6?alt=media&token=e047f3f6-f2a4-4e5e-98af-d11631ba90a4&apiKey=dc3782de61224ee6afee73d63ac0f50c",
-  "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F6263fa8bd8034f829e6d2bd8c59dc641?alt=media&token=2eae1cca-4483-46fc-aaae-8c7945842c0d&apiKey=dc3782de61224ee6afee73d63ac0f50c",
-  "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F8e3e780a6d09483caaf0fd85c9ff3eb9?alt=media&token=eceea692-5e5e-4622-9402-b2ed1a8f4ba5&apiKey=dc3782de61224ee6afee73d63ac0f50c",
-  // extra video (unique)
-  "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F34ffec42bb6e4f4f8e0de4486d645921?alt=media&token=8a3b2e78-930b-4e3b-9e51-e6fb447dfb46&apiKey=dc3782de61224ee6afee73d63ac0f50c",
-])).slice(0,4);
+const VIDEO_ASSETS = Array.from(
+  new Set([
+    "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F692d5f21dc4b4bb39648a8b119e61a53?alt=media&token=cfe784bc-da0e-4bf4-b4b3-8b7651137253&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+    "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F26236c4d94594f8497d9c42174c58fa6?alt=media&token=e047f3f6-f2a4-4e5e-98af-d11631ba90a4&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+    "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F6263fa8bd8034f829e6d2bd8c59dc641?alt=media&token=2eae1cca-4483-46fc-aaae-8c7945842c0d&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+    "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F8e3e780a6d09483caaf0fd85c9ff3eb9?alt=media&token=eceea692-5e5e-4622-9402-b2ed1a8f4ba5&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+    // extra video (unique)
+    "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F34ffec42bb6e4f4f8e0de4486d645921?alt=media&token=8a3b2e78-930b-4e3b-9e51-e6fb447dfb46&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+  ]),
+).slice(0, 4);
 
 export default function Gallery() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);

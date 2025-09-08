@@ -74,15 +74,48 @@ export default function Constellation() {
             {LINKS.map(([a, b], idx) => {
               const A = STARS.find((s) => s.id === a)!;
               const B = STARS.find((s) => s.id === b)!;
-              return <line key={idx} x1={A.x} y1={A.y} x2={B.x} y2={B.y} stroke="hsl(var(--primary))" strokeOpacity="0.25" strokeWidth="0.35" />;
+              return (
+                <line
+                  key={idx}
+                  x1={A.x}
+                  y1={A.y}
+                  x2={B.x}
+                  y2={B.y}
+                  stroke="hsl(var(--primary))"
+                  strokeOpacity="0.25"
+                  strokeWidth="0.35"
+                />
+              );
             })}
 
             {STARS.map((s) => {
               const lit = power >= s.req;
               return (
-                <g key={s.id} className="cursor-pointer" onClick={() => goTo(s.id)} onMouseEnter={() => setHovered(s.id)} onMouseLeave={() => setHovered(null)}>
-                  <circle cx={s.x} cy={s.y} r={lit ? 3 : 1.8} fill={lit ? "hsl(var(--accent))" : "hsl(var(--muted-foreground))"} />
-                  <circle cx={s.x} cy={s.y} r={6} fill="none" stroke="hsl(var(--accent))" strokeOpacity={lit ? 0.35 : 0} />
+                <g
+                  key={s.id}
+                  className="cursor-pointer"
+                  onClick={() => goTo(s.id)}
+                  onMouseEnter={() => setHovered(s.id)}
+                  onMouseLeave={() => setHovered(null)}
+                >
+                  <circle
+                    cx={s.x}
+                    cy={s.y}
+                    r={lit ? 3 : 1.8}
+                    fill={
+                      lit
+                        ? "hsl(var(--accent))"
+                        : "hsl(var(--muted-foreground))"
+                    }
+                  />
+                  <circle
+                    cx={s.x}
+                    cy={s.y}
+                    r={6}
+                    fill="none"
+                    stroke="hsl(var(--accent))"
+                    strokeOpacity={lit ? 0.35 : 0}
+                  />
                 </g>
               );
             })}
@@ -90,7 +123,7 @@ export default function Constellation() {
 
           <div className="mt-3 text-center text-sm">
             <div className="inline-block bg-[rgba(0,0,0,0.6)] text-white px-3 py-1 rounded">
-              {hovered ? hovered : 'Click a node to navigate'}
+              {hovered ? hovered : "Click a node to navigate"}
             </div>
           </div>
         </div>

@@ -90,7 +90,9 @@ export function SlideViewer() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   // slide image primary index map to allow cycling images per slide
-  const [slideImageIndexMap, setSlideImageIndexMap] = useState<Record<string, number>>({});
+  const [slideImageIndexMap, setSlideImageIndexMap] = useState<
+    Record<string, number>
+  >({});
 
   useEffect(() => {
     const el = containerRef.current;
@@ -295,7 +297,11 @@ export function SlideViewer() {
       <div className="w-full aspect-[16/9] relative">
         <ThreeScene
           images={(() => {
-            const imgs = slide.images ? [...slide.images] : slide.bg ? [slide.bg] : [""];
+            const imgs = slide.images
+              ? [...slide.images]
+              : slide.bg
+                ? [slide.bg]
+                : [""];
             const idx = slideImageIndexMap[slide.id] || 0;
             if (imgs.length <= 1) return imgs;
             return [...imgs.slice(idx), ...imgs.slice(0, idx)];
@@ -306,10 +312,16 @@ export function SlideViewer() {
         />
 
         {/* double-click background to cycle slide images */}
-        <div className="absolute inset-0" onDoubleClick={() => {
-          if (!slide.images || slide.images.length <= 1) return;
-          setSlideImageIndexMap((m) => ({ ...m, [slide.id]: ((m[slide.id] || 0) + 1) % slide.images!.length }));
-        }} />
+        <div
+          className="absolute inset-0"
+          onDoubleClick={() => {
+            if (!slide.images || slide.images.length <= 1) return;
+            setSlideImageIndexMap((m) => ({
+              ...m,
+              [slide.id]: ((m[slide.id] || 0) + 1) % slide.images!.length,
+            }));
+          }}
+        />
 
         {/* subtle particle overlay / canvas */}
         <div className="pointer-events-none absolute inset-0">

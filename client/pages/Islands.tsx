@@ -89,7 +89,10 @@ export default function Islands() {
   return (
     <div className="min-h-[calc(100vh-64px)]">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="relative rounded-xl overflow-hidden" style={{ height: 360 }}>
+        <div
+          className="relative rounded-xl overflow-hidden"
+          style={{ height: 360 }}
+        >
           <ThreeScene
             images={[
               "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F4b659da8a22e4f58841b21f388be5a09?format=webp&width=1600",
@@ -100,19 +103,53 @@ export default function Islands() {
 
           {/* interactive thumbnails */}
           {[
-            { id: 'is-1', x: 18, y: 30, img: SLIDES.find(s=>s.id==='islands')?.images?.[0] || '' },
-            { id: 'is-2', x: 40, y: 18, img: SLIDES.find(s=>s.id==='gallery')?.images?.[0] || '' },
-            { id: 'is-3', x: 62, y: 36, img: SLIDES.find(s=>s.id==='library')?.images?.[0] || '' },
-          ].map((t)=> (
-            <button key={t.id} onClick={()=>setOpenId(t.id)} className="absolute rounded-lg overflow-hidden border border-border/30 shadow-lg" style={{left:`${t.x}%`, top:`${t.y}%`, width: 120, height: 80}}>
-              <img src={t.img} alt="island" className="w-full h-full object-cover" />
+            {
+              id: "is-1",
+              x: 18,
+              y: 30,
+              img: SLIDES.find((s) => s.id === "islands")?.images?.[0] || "",
+            },
+            {
+              id: "is-2",
+              x: 40,
+              y: 18,
+              img: SLIDES.find((s) => s.id === "gallery")?.images?.[0] || "",
+            },
+            {
+              id: "is-3",
+              x: 62,
+              y: 36,
+              img: SLIDES.find((s) => s.id === "library")?.images?.[0] || "",
+            },
+          ].map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setOpenId(t.id)}
+              className="absolute rounded-lg overflow-hidden border border-border/30 shadow-lg"
+              style={{
+                left: `${t.x}%`,
+                top: `${t.y}%`,
+                width: 120,
+                height: 80,
+              }}
+            >
+              <img
+                src={t.img}
+                alt="island"
+                className="w-full h-full object-cover"
+              />
             </button>
           ))}
 
           <div className="absolute inset-0 p-8 flex items-end">
             <div className="text-white">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">Dream Islands</h1>
-              <p className="text-white/85 mt-2 max-w-2xl">Touch a crystal to enter. Solve the riddle to unlock the island and gain a vision shard.</p>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
+                Dream Islands
+              </h1>
+              <p className="text-white/85 mt-2 max-w-2xl">
+                Touch a crystal to enter. Solve the riddle to unlock the island
+                and gain a vision shard.
+              </p>
             </div>
           </div>
         </div>
