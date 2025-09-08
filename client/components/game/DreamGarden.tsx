@@ -232,11 +232,15 @@ export default function DreamGarden({
 
             <div className="flex items-center gap-3">
               <button
-                onClick={() =>
-                  placeBlossomInGate(
-                    placed.length === 0 ? undefined : undefined,
-                  )
-                }
+                onClick={() => {
+                  // pick first collected but unplaced blossom
+                  const candidate = blossoms.map(b => b.id).find(id => collected[`frag-garden-${id}`] && !placed.includes(id));
+                  if (!candidate) {
+                    toast({ title: 'No blossom', description: 'Collect a blossom first to place it.' });
+                    return;
+                  }
+                  placeBlossomInGate(candidate);
+                }}
                 className="px-3 py-1 rounded bg-primary/20 text-primary text-sm"
                 aria-label="Place blossom"
               >
