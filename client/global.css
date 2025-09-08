@@ -103,7 +103,38 @@
     @apply border-border;
   }
 
+  html, body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "liga" 1;
+  }
+
+  /* Quest specific typography helpers */
+  .quest-title {
+    font-weight: 800;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 0.2px;
+    line-height: 1.06;
+    word-break: break-word;
+  }
+
+  .quest-body {
+    line-height: 1.55;
+    letter-spacing: 0.25px;
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+
+  /* ensure panels render above background and avoid subpixel overlap */
+  .quest-panel {
+    will-change: transform, opacity;
+    transform: translateZ(0);
   }
 }
