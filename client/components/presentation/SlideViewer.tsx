@@ -473,7 +473,7 @@ export function SlideViewer() {
       </div>
 
       <div className="border-t border-border/30 p-3">
-        <div className="w-full flex items-center justify-center">
+        <div className="w-full flex items-center justify-center relative">
           <svg viewBox="0 0 300 80" className="w-full max-w-2xl">
             {SLIDES.map((s, i) => {
               const x = 20 + i * (240 / Math.max(SLIDES.length - 1, 1));
@@ -483,6 +483,8 @@ export function SlideViewer() {
                 <g
                   key={s.id}
                   onClick={() => setIndex(i)}
+                  onMouseEnter={() => setHovered(i)}
+                  onMouseLeave={() => setHovered(null)}
                   className="cursor-pointer"
                 >
                   <circle
@@ -491,19 +493,17 @@ export function SlideViewer() {
                     r={lit ? 7 : 4}
                     fill={lit ? "hsl(var(--accent))" : "hsl(var(--muted))"}
                   />
-                  <text
-                    x={x + 10}
-                    y={y + 4}
-                    fontSize={10}
-                    fill="currentColor"
-                    className="text-xs"
-                  >
-                    {s.title ? (s.title.length > 18 ? s.title.slice(0, 16) + "…" : s.title) : ""}
-                  </text>
                 </g>
               );
             })}
           </svg>
+
+          {/* tooltip for hovered or active slide to avoid label overlap */}
+          <div className="absolute bottom-2 left-0 right-0 flex items-center justify-center pointer-events-none">
+            <div className="bg-[rgba(0,0,0,0.6)] text-white text-xs px-3 py-1 rounded-md shadow-lg max-w-[60%] text-center">
+              {hovered !== null ? SLIDES[hovered].title : SLIDES[index].title}
+            </div>
+          </div>
         </div>
       </div>
     </div>
