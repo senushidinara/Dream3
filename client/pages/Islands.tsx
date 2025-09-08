@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { DreamFragment } from "@/components/game/DreamFragment";
 import { useGame } from "@/state/game";
+import ThreeScene from "@/components/presentation/ThreeScene";
+import { slides as SLIDES } from "@/data/slides";
 import {
   Dialog,
   DialogContent,
