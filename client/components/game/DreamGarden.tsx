@@ -174,9 +174,12 @@ export default function DreamGarden({
       <div className="w-full aspect-[16/9] relative">
         <ThreeScene
           images={gardenImages}
-          filter="brightness(0.88) saturate(1.05)"
+          filter="brightness(1.02) saturate(1.08)"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none" />
+        <div className="absolute inset-0">
+          <Stardust intensity={40} color="220,240,220" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/18 pointer-events-none" />
 
         {/* interactive blossoms */}
         {blossoms.map((b) => (
