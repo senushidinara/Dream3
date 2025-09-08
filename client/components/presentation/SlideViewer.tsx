@@ -176,33 +176,39 @@ export function SlideViewer() {
 
         <div className="absolute inset-0 bg-black/28" style={{ backdropFilter: "blur(2px)" }} />
 
-        <div className="absolute inset-0 p-8 flex flex-col justify-between pointer-events-none">
-          <header>
-            <h2 className="text-3xl font-extrabold text-primary">{slide.title}</h2>
-            {slide.subtitle && <p className="text-sm text-muted-foreground">{slide.subtitle}</p>}
-          </header>
+        <div className="absolute inset-0 p-8 flex items-start">
+          {/* Left info panel to ensure contrast and readability */}
+          <div className="pointer-events-auto max-w-xl w-full bg-[rgba(20,12,30,0.64)]/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-primary/10">
+            <header>
+              <h2 className="text-4xl sm:text-5xl font-extrabold text-primary drop-shadow-[0_6px_16px_rgba(0,0,0,0.6)] leading-tight">{slide.title}</h2>
+              {slide.subtitle && <p className="mt-2 text-base text-muted-foreground">{slide.subtitle}</p>}
+            </header>
 
-          <div className="max-w-2xl pointer-events-auto">
-            <p className="text-lg text-foreground/90">{slide.body}</p>
+            <div className="mt-4">
+              <p className="text-lg text-foreground/95" style={{ textShadow: "0 3px 10px rgba(0,0,0,0.45)" }}>{slide.body}</p>
 
-            {slide.contentType === "video" && (slide.videoUrls || slide.videoUrl) && (
-              <div className="mt-4">
-                {slide.videoUrls ? <VideoGallery urls={slide.videoUrls} /> : <video controls src={slide.videoUrl} className="w-full rounded-md shadow-lg" />}
-              </div>
-            )}
+              {slide.contentType === "video" && (slide.videoUrls || slide.videoUrl) && (
+                <div className="mt-4">
+                  {slide.videoUrls ? <VideoGallery urls={slide.videoUrls} /> : <video controls src={slide.videoUrl} className="w-full rounded-md shadow-lg" />}
+                </div>
+              )}
 
-            {slide.contentType === "game" && slide.game === "rhythm" && (
-              <div className="mt-4 bg-background/60 p-3 rounded pointer-events-auto">
-                <RhythmGame />
-              </div>
-            )}
+              {slide.contentType === "game" && slide.game === "rhythm" && (
+                <div className="mt-4 bg-background/60 p-3 rounded pointer-events-auto">
+                  <RhythmGame />
+                </div>
+              )}
 
-            {slide.contentType === "game" && slide.game === "unscramble" && (
-              <div className="mt-4 bg-background/60 p-3 rounded pointer-events-auto">
-                <WordUnscramble answer="Imagination" />
-              </div>
-            )}
+              {slide.contentType === "game" && slide.game === "unscramble" && (
+                <div className="mt-4 bg-background/60 p-3 rounded pointer-events-auto">
+                  <WordUnscramble answer="Imagination" />
+                </div>
+              )}
+            </div>
           </div>
+
+          {/* optional right spacer to keep layout balanced */}
+          <div className="flex-1" />
         </div>
 
         {/* hotspots */}
