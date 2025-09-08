@@ -1,6 +1,12 @@
 import React, { useEffect, useRef } from "react";
 
-export default function Stardust({ intensity = 60, color = "255, 200, 255" }: { intensity?: number; color?: string }) {
+export default function Stardust({
+  intensity = 60,
+  color = "255, 200, 255",
+}: {
+  intensity?: number;
+  color?: string;
+}) {
   const ref = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -9,7 +15,14 @@ export default function Stardust({ intensity = 60, color = "255, 200, 255" }: { 
     const ctx = canvas.getContext("2d")!;
     let w = 0;
     let h = 0;
-    const particles: { x: number; y: number; r: number; vx: number; vy: number; a: number }[] = [];
+    const particles: {
+      x: number;
+      y: number;
+      r: number;
+      vx: number;
+      vy: number;
+      a: number;
+    }[] = [];
 
     const resize = () => {
       w = canvas.width = canvas.clientWidth * devicePixelRatio;
@@ -59,5 +72,10 @@ export default function Stardust({ intensity = 60, color = "255, 200, 255" }: { 
     };
   }, [intensity, color]);
 
-  return <canvas ref={ref} className="absolute inset-0 w-full h-full pointer-events-none opacity-80" />;
+  return (
+    <canvas
+      ref={ref}
+      className="absolute inset-0 w-full h-full pointer-events-none opacity-80"
+    />
+  );
 }

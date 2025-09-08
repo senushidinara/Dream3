@@ -3,10 +3,16 @@ import ThreeScene from "@/components/presentation/ThreeScene";
 import { useGame } from "@/state/game";
 import { toast } from "@/components/ui/use-toast";
 
-const BLOSSOM_SRC = "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fbdb201c0f0b44a618e382f105e9991c5?format=webp&width=300";
-const BUTTERFLY_SRC = "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F33b2df6a9ce04f07a5026a2750b74dfe?format=webp&width=200";
+const BLOSSOM_SRC =
+  "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fbdb201c0f0b44a618e382f105e9991c5?format=webp&width=300";
+const BUTTERFLY_SRC =
+  "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F33b2df6a9ce04f07a5026a2750b74dfe?format=webp&width=200";
 
-export default function DreamGarden({ className = "" }: { className?: string }) {
+export default function DreamGarden({
+  className = "",
+}: {
+  className?: string;
+}) {
   const { collectFragment, collected, awardShard } = useGame();
   const [blossoms, setBlossoms] = useState(
     () =>
@@ -20,7 +26,12 @@ export default function DreamGarden({ className = "" }: { className?: string }) 
   );
 
   const [butterflies, setButterflies] = useState(() =>
-    Array.from({ length: 3 }).map((_, i) => ({ id: `bf-${i}`, x: 20 + i * 28, y: 18 + (i % 2) * 8, caught: false })),
+    Array.from({ length: 3 }).map((_, i) => ({
+      id: `bf-${i}`,
+      x: 20 + i * 28,
+      y: 18 + (i % 2) * 8,
+      caught: false,
+    })),
   );
 
   const [placed, setPlaced] = useState<string[]>([]);
@@ -40,17 +51,28 @@ export default function DreamGarden({ className = "" }: { className?: string }) 
   const handleBlossom = (b: { id: string }) => {
     const fid = `frag-garden-${b.id}`;
     if (collected[fid]) {
-      toast({ title: "Already picked", description: "You already collected that blossom." });
+      toast({
+        title: "Already picked",
+        description: "You already collected that blossom.",
+      });
       return;
     }
     collectFragment(fid);
-    toast({ title: "Dream Blossom", description: "You picked a glowing blossom and felt a memory stir." });
+    toast({
+      title: "Dream Blossom",
+      description: "You picked a glowing blossom and felt a memory stir.",
+    });
   };
 
   const handleButterfly = (bfId: string) => {
-    setButterflies((prev) => prev.map((b) => (b.id === bfId ? { ...b, caught: true } : b)));
+    setButterflies((prev) =>
+      prev.map((b) => (b.id === bfId ? { ...b, caught: true } : b)),
+    );
     awardShard(1);
-    toast({ title: "Butterfly caught", description: "A stardust clue revealed — you earned a vision shard." });
+    toast({
+      title: "Butterfly caught",
+      description: "A stardust clue revealed — you earned a vision shard.",
+    });
   };
 
   const placeBlossomInGate = (blossomId?: string) => {
@@ -58,15 +80,24 @@ export default function DreamGarden({ className = "" }: { className?: string }) 
     if (!blossomId) return;
     const fid = `frag-garden-${blossomId}`;
     if (!collected[fid]) {
-      toast({ title: "Missing Blossom", description: "Collect this blossom first to place it in the gate." });
+      toast({
+        title: "Missing Blossom",
+        description: "Collect this blossom first to place it in the gate.",
+      });
       return;
     }
     if (placed.length >= 3) {
-      toast({ title: "Gate full", description: "Remove a placed blossom before placing another." });
+      toast({
+        title: "Gate full",
+        description: "Remove a placed blossom before placing another.",
+      });
       return;
     }
     if (placed.includes(blossomId)) {
-      toast({ title: "Already placed", description: "That blossom is already in the gate." });
+      toast({
+        title: "Already placed",
+        description: "That blossom is already in the gate.",
+      });
       return;
     }
     const next = [...placed, blossomId];
@@ -77,9 +108,15 @@ export default function DreamGarden({ className = "" }: { className?: string }) 
       const ok = next.every((v, i) => v === correct[i]);
       if (ok) {
         setPuzzleSolved(true);
-        toast({ title: "Gate unlocked", description: "Crystal vines rearranged — the Fountain stirs." });
+        toast({
+          title: "Gate unlocked",
+          description: "Crystal vines rearranged — the Fountain stirs.",
+        });
       } else {
-        toast({ title: "Not quite", description: "The sequence is not correct. Try again." });
+        toast({
+          title: "Not quite",
+          description: "The sequence is not correct. Try again.",
+        });
       }
     }
   };
@@ -90,16 +127,25 @@ export default function DreamGarden({ className = "" }: { className?: string }) 
 
   const handleFountain = () => {
     if (!puzzleSolved) {
-      toast({ title: "Locked", description: "Solve the Puzzle Gate first to awaken the Fountain." });
+      toast({
+        title: "Locked",
+        description: "Solve the Puzzle Gate first to awaken the Fountain.",
+      });
       return;
     }
     if (fountainCollected) {
-      toast({ title: "Collected", description: "You already collected the Fountain's fragment." });
+      toast({
+        title: "Collected",
+        description: "You already collected the Fountain's fragment.",
+      });
       return;
     }
     collectFragment("frag-garden-fountain");
     setFountainCollected(true);
-    toast({ title: "Fountain of Clarity", description: "A memory fragment rose from the water." });
+    toast({
+      title: "Fountain of Clarity",
+      description: "A memory fragment rose from the water.",
+    });
   };
 
   // subtle butterfly float animation
@@ -108,7 +154,9 @@ export default function DreamGarden({ className = "" }: { className?: string }) 
     let t = 0;
     const loop = () => {
       t += 0.01;
-      setButterflies((prev) => prev.map((b, i) => ({ ...b, x: ((b.x + Math.sin(t + i) * 0.2) % 100) })));
+      setButterflies((prev) =>
+        prev.map((b, i) => ({ ...b, x: (b.x + Math.sin(t + i) * 0.2) % 100 })),
+      );
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
@@ -116,9 +164,17 @@ export default function DreamGarden({ className = "" }: { className?: string }) 
   }, []);
 
   return (
-    <div className={"relative rounded-lg overflow-hidden border border-border/50 bg-card/60 " + className}>
+    <div
+      className={
+        "relative rounded-lg overflow-hidden border border-border/50 bg-card/60 " +
+        className
+      }
+    >
       <div className="w-full aspect-[16/9] relative">
-        <ThreeScene images={gardenImages} filter="brightness(0.88) saturate(1.05)" />
+        <ThreeScene
+          images={gardenImages}
+          filter="brightness(0.88) saturate(1.05)"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none" />
 
         {/* interactive blossoms */}
@@ -130,7 +186,11 @@ export default function DreamGarden({ className = "" }: { className?: string }) 
             style={{ left: `${b.x}%`, top: `${b.y}%`, width: 44, height: 44 }}
             aria-label={`Blossom ${b.id}`}
           >
-            <img src={BLOSSOM_SRC} alt="blossom" className={`w-full h-full rounded-full shadow-lg ${collected[`frag-garden-${b.id}`] ? "opacity-40 grayscale" : ""}`} />
+            <img
+              src={BLOSSOM_SRC}
+              alt="blossom"
+              className={`w-full h-full rounded-full shadow-lg ${collected[`frag-garden-${b.id}`] ? "opacity-40 grayscale" : ""}`}
+            />
           </button>
         ))}
 
@@ -143,7 +203,11 @@ export default function DreamGarden({ className = "" }: { className?: string }) 
             style={{ left: `${bf.x}%`, top: `${bf.y}%` }}
             aria-label={`butterfly ${bf.id}`}
           >
-            <img src={BUTTERFLY_SRC} alt="butterfly" className={`w-full h-full ${bf.caught ? "opacity-30" : "animate-bounce"}`} />
+            <img
+              src={BUTTERFLY_SRC}
+              alt="butterfly"
+              className={`w-full h-full ${bf.caught ? "opacity-30" : "animate-bounce"}`}
+            />
           </button>
         ))}
 
@@ -164,7 +228,11 @@ export default function DreamGarden({ className = "" }: { className?: string }) 
 
             <div className="flex items-center gap-3">
               <button
-                onClick={() => placeBlossomInGate(placed.length === 0 ? undefined : undefined)}
+                onClick={() =>
+                  placeBlossomInGate(
+                    placed.length === 0 ? undefined : undefined,
+                  )
+                }
                 className="px-3 py-1 rounded bg-primary/20 text-primary text-sm"
                 aria-label="Place blossom"
               >
@@ -183,20 +251,37 @@ export default function DreamGarden({ className = "" }: { className?: string }) 
                 onClick={handleFountain}
                 className={`px-4 py-2 rounded-md text-sm font-semibold ${puzzleSolved ? "bg-accent text-accent-foreground" : "bg-muted text-foreground"}`}
               >
-                {puzzleSolved ? (fountainCollected ? "Collected" : "Activate Fountain") : "Locked"}
+                {puzzleSolved
+                  ? fountainCollected
+                    ? "Collected"
+                    : "Activate Fountain"
+                  : "Locked"}
               </button>
             </div>
           </div>
 
-          <div className="mt-2 text-xs text-muted-foreground text-center">Puzzle Gate: place 3 blossoms in correct order to awaken the Fountain.</div>
+          <div className="mt-2 text-xs text-muted-foreground text-center">
+            Puzzle Gate: place 3 blossoms in correct order to awaken the
+            Fountain.
+          </div>
         </div>
-
       </div>
 
       <div className="p-4 flex items-center gap-4">
-        <div className="flex-1 text-sm text-muted-foreground">Garden — explore, catch butterflies, place blossoms.</div>
+        <div className="flex-1 text-sm text-muted-foreground">
+          Garden — explore, catch butterflies, place blossoms.
+        </div>
         <div className="flex gap-2">
-          <div className="px-3 py-1 rounded bg-primary/20 text-primary">Fragments: {useMemo(() => Object.keys(collected).filter((k) => k.startsWith("frag-garden")).length, [collected])}</div>
+          <div className="px-3 py-1 rounded bg-primary/20 text-primary">
+            Fragments:{" "}
+            {useMemo(
+              () =>
+                Object.keys(collected).filter((k) =>
+                  k.startsWith("frag-garden"),
+                ).length,
+              [collected],
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -9,15 +9,30 @@ function ColorReveal() {
   return (
     <div className="rounded-xl border border-border/50 p-4 bg-card/60">
       <h4 className="font-semibold">Canvas Reveal</h4>
-      <p className="text-sm text-muted-foreground">Drag the color orb onto the canvas to reveal the painting.</p>
+      <p className="text-sm text-muted-foreground">
+        Drag the color orb onto the canvas to reveal the painting.
+      </p>
       <div className="mt-4 grid grid-cols-5 gap-4 items-center">
         <div className="col-span-4 relative">
-          <div onDragOver={(e) => e.preventDefault()} onDrop={() => setRevealed(true)} className="aspect-[16/9] rounded-lg overflow-hidden border bg-gradient-to-br from-muted to-muted/60 grid place-items-center">
-            {!revealed ? <div className="text-sm text-muted-foreground">Drop color here</div> : <div className="w-full h-full bg-[radial-gradient(circle_at_20%_20%,hsl(var(--accent)/.35),transparent_40%),radial-gradient(circle_at_80%_60%,hsl(var(--secondary)/.35),transparent_35%),linear-gradient(135deg,hsl(var(--primary)/.4),hsl(var(--accent)/.35),hsl(var(--secondary)/.4))]" />}
+          <div
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={() => setRevealed(true)}
+            className="aspect-[16/9] rounded-lg overflow-hidden border bg-gradient-to-br from-muted to-muted/60 grid place-items-center"
+          >
+            {!revealed ? (
+              <div className="text-sm text-muted-foreground">
+                Drop color here
+              </div>
+            ) : (
+              <div className="w-full h-full bg-[radial-gradient(circle_at_20%_20%,hsl(var(--accent)/.35),transparent_40%),radial-gradient(circle_at_80%_60%,hsl(var(--secondary)/.35),transparent_35%),linear-gradient(135deg,hsl(var(--primary)/.4),hsl(var(--accent)/.35),hsl(var(--secondary)/.4))]" />
+            )}
           </div>
         </div>
         <div className="col-span-1 grid gap-3">
-          <div draggable className="w-14 h-14 rounded-full bg-gradient-to-tr from-primary via-accent to-secondary shadow-lg cursor-grab active:cursor-grabbing" />
+          <div
+            draggable
+            className="w-14 h-14 rounded-full bg-gradient-to-tr from-primary via-accent to-secondary shadow-lg cursor-grab active:cursor-grabbing"
+          />
           {revealed && <span className="text-xs text-primary">Revealed!</span>}
         </div>
       </div>
@@ -38,7 +53,10 @@ export default function Gallery() {
   return (
     <div className="min-h-[calc(100vh-64px)]">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="relative rounded-xl overflow-hidden" style={{ height: 320 }}>
+        <div
+          className="relative rounded-xl overflow-hidden"
+          style={{ height: 320 }}
+        >
           <ThreeScene
             images={[
               "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fc4e7bcb3c490419da0e26370418c5825?format=webp&width=1600",
@@ -52,8 +70,12 @@ export default function Gallery() {
 
           <div className="absolute inset-0 p-8 flex items-end">
             <div className="text-white">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">Passion Galleries</h1>
-              <p className="text-white/95 mt-2 max-w-2xl">Each object is a portal. Play, create, and unlock new rooms.</p>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
+                Passion Galleries
+              </h1>
+              <p className="text-white/95 mt-2 max-w-2xl">
+                Each object is a portal. Play, create, and unlock new rooms.
+              </p>
             </div>
           </div>
         </div>
@@ -61,24 +83,43 @@ export default function Gallery() {
         <div className="mt-8 grid lg:grid-cols-3 gap-6">
           <div className="relative rounded-xl overflow-hidden border border-border/50 bg-card/60 p-4">
             <h4 className="font-semibold">Rhythm Hall</h4>
-            <p className="text-sm text-muted-foreground">Play the kinetic instruments to reveal a fragment.</p>
+            <p className="text-sm text-muted-foreground">
+              Play the kinetic instruments to reveal a fragment.
+            </p>
             <div className="mt-4">
               <RhythmGame />
             </div>
-            <DreamFragment id="frag-gallery-1" className="absolute -top-2 -right-2" />
+            <DreamFragment
+              id="frag-gallery-1"
+              className="absolute -top-2 -right-2"
+            />
           </div>
 
           <div className="relative rounded-xl overflow-hidden border border-border/50 bg-card/60 p-4">
             <h4 className="font-semibold">Moving Canvases</h4>
-            <p className="text-sm text-muted-foreground">Interact with the gallery canvases to reveal hidden animations.</p>
+            <p className="text-sm text-muted-foreground">
+              Interact with the gallery canvases to reveal hidden animations.
+            </p>
             <div className="mt-4 grid grid-cols-2 gap-3">
               {VIDEO_ASSETS.map((v) => (
-                <button key={v} onClick={() => setActiveVideo(v)} className="aspect-[16/9] rounded overflow-hidden bg-black/60">
-                  <video src={v} className="w-full h-full object-cover" muted preload="metadata" />
+                <button
+                  key={v}
+                  onClick={() => setActiveVideo(v)}
+                  className="aspect-[16/9] rounded overflow-hidden bg-black/60"
+                >
+                  <video
+                    src={v}
+                    className="w-full h-full object-cover"
+                    muted
+                    preload="metadata"
+                  />
                 </button>
               ))}
             </div>
-            <DreamFragment id="frag-gallery-2" className="absolute -top-2 -right-2" />
+            <DreamFragment
+              id="frag-gallery-2"
+              className="absolute -top-2 -right-2"
+            />
           </div>
 
           <div className="relative rounded-xl overflow-hidden border border-border/50 bg-card/60 p-4">
@@ -90,8 +131,16 @@ export default function Gallery() {
 
       {/* video modal */}
       {activeVideo && (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/80" onClick={() => setActiveVideo(null)}>
-          <video src={activeVideo} controls autoPlay className="max-w-[80%] max-h-[80%] rounded shadow-2xl" />
+        <div
+          className="fixed inset-0 z-50 grid place-items-center bg-black/80"
+          onClick={() => setActiveVideo(null)}
+        >
+          <video
+            src={activeVideo}
+            controls
+            autoPlay
+            className="max-w-[80%] max-h-[80%] rounded shadow-2xl"
+          />
         </div>
       )}
     </div>
