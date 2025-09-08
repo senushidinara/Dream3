@@ -185,7 +185,7 @@ export default function Gallery() {
 
           <div className="relative rounded-xl overflow-hidden border border-border/50 bg-card/60 p-4">
             <h4 className="font-semibold">Color Reveal</h4>
-            <ColorReveal />
+            <ColorRevealNew />
           </div>
         </div>
       </div>
