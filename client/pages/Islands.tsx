@@ -11,6 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import MemoryOrbs from "@/components/world/MemoryOrbs";
+import PortalCard, { Portal } from "@/components/world/PortalCard";
 
 const ISLANDS = [
   {
@@ -69,6 +71,154 @@ function Crystal({ unlocked }: { unlocked: boolean }) {
   );
 }
 
+const PORTALS: Portal[] = [
+  {
+    id: "portal-infinity-bridge",
+    title: "Bridge to Infinity",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2Fc16d058f39fa481caaed0b57754b6d48?format=webp&width=800",
+    media: [
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2Ffc8d0fde2a1942049615e99b50c80de9?format=webp&width=1200",
+      },
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F42cbfa7a8c6c4139877a4663f3da030c?format=webp&width=1200",
+      },
+    ],
+    description:
+      "A massive shimmering portal of light stretching into the stars.",
+  },
+  {
+    id: "portal-main-hall",
+    title: "Crystal Main Hall",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2Ff01713cd137b45a79d7306734a1458d6?format=webp&width=800",
+    media: [
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2Ff943fd8e7eae492584743c133e1abac4?format=webp&width=1200",
+      },
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F366178ae2e1b433bbfe03425ec116ca9?format=webp&width=1200",
+      },
+    ],
+    description:
+      "A vast glowing hall of crystal marble with floating staircases.",
+  },
+  {
+    id: "portal-garden",
+    title: "Garden of Moments",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F9673c618b64e4a47a5d5ed839fe85937?format=webp&width=800",
+    media: [
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F03aadb62bbe342d2a51c3eb2dcb243a4?format=webp&width=1200",
+      },
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2Fb182989ba01349da98890866d3cb4dbc?format=webp&width=1200",
+      },
+    ],
+    description:
+      "A nature path of glowing flowers and lanterns — serene and warm.",
+  },
+  {
+    id: "portal-orbs",
+    title: "Memory Orbs",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F5e1364504e284621b0559def79059088?format=webp&width=800",
+    media: [
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F63f78bf8ed984f56956557af793c22b8?format=webp&width=1200",
+      },
+      {
+        type: "video",
+        src: "https://cdn.builder.io/o/assets%2F83b5046001d2448094e92a95add784c0%2F290c9bf601394ac78b52305d02e18779?alt=media&token=d1f4a176-a677-4ca6-ba9a-fe9d2710d82f&apiKey=83b5046001d2448094e92a95add784c0",
+      },
+    ],
+    description:
+      "Floating orbs holding tiny living memories — touch to listen.",
+  },
+  {
+    id: "portal-doors-gold",
+    title: "Golden Transformation Door",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2Fbe652d8347ab42ad81f134b01e245844?format=webp&width=800",
+    media: [
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2Fa4ec6c9ae6024b9ba436e795f137c17d?format=webp&width=1200",
+      },
+    ],
+    description: "A radiant golden door engraved with phoenix and butterflies.",
+  },
+  {
+    id: "portal-vision-door",
+    title: "Vision Room Door",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2Fe5383d9434f445e6918feb4640836503?format=webp&width=800",
+    media: [
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F717d269214dd4b09961965f142747a27?format=webp&width=1200",
+      },
+    ],
+    description: "A transparent door showing shifting futures — choose a path.",
+  },
+  {
+    id: "portal-paintings",
+    title: "Hall of Paintings",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F5fe96626e4ff407686c995eaecff0b52?format=webp&width=800",
+    media: [
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F55a943c2f8e34162a9dea70ca4053e44?format=webp&width=1200",
+      },
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2Fafeea6fc467f4ad2ae55cf68a88d67ae?format=webp&width=1200",
+      },
+    ],
+    description: "Walls of living color — canvases shift and breathe.",
+  },
+  {
+    id: "portal-stair",
+    title: "Staircases of Light",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2Fabb11e68f9f24b9d90df93e50fec0df9?format=webp&width=800",
+    media: [
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F4fd0f1b32f114e17bea7baac9bd79d85?format=webp&width=1200",
+      },
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F5e629caaf6724638bdc329b1a61f0316?format=webp&width=1200",
+      },
+    ],
+    description: "Elegant floating stairs connecting realms.",
+  },
+  {
+    id: "portal-constellation",
+    title: "Constellation Gate",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F9507e2d435d846199ebdff41a8283c95?format=webp&width=800",
+    media: [
+      {
+        type: "image",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2Fd7e66eba30794d0ca633d52af1623402?format=webp&width=1200",
+      },
+    ],
+    description: "A celestial arch that opens to starfields and maps.",
+  },
+];
+
 export default function Islands() {
   const { unlockedIslands, unlockIsland, awardShard } = useGame();
   const [openId, setOpenId] = useState<string | null>(null);
@@ -95,10 +245,19 @@ export default function Islands() {
         >
           <ThreeScene
             images={[
-              "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F4b659da8a22e4f58841b21f388be5a09?format=webp&width=1600",
-              "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F510711956ce145129c1fb0753e6c5230?format=webp&width=1600",
+              "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F3d3bb36c424543288c2484383800e261?format=webp&width=1600",
+              "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F369f2f71f3a44f64b6c4114234b83f5e?format=webp&width=1600",
             ]}
             filter="brightness(1.04) saturate(1.08)"
+          />
+          <MemoryOrbs
+            images={[
+              "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F5e1364504e284621b0559def79059088?format=webp&width=600",
+              "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F63f78bf8ed984f56956557af793c22b8?format=webp&width=600",
+              "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F5e3bcf0f342a4699953f7a21f6369f50?format=webp&width=600",
+            ]}
+            density={16}
+            speed={0.12}
           />
 
           {/* interactive thumbnails */}
@@ -173,6 +332,19 @@ export default function Islands() {
               />
             </div>
           ))}
+        </div>
+
+        <div className="mt-12">
+          <h2 className="text-xl font-bold">Dream World Portals</h2>
+          <p className="text-sm text-muted-foreground mt-1">
+            Step through any door to glimpse a realm. Each portal can hide a
+            Dream Fragment.
+          </p>
+          <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PORTALS.map((p) => (
+              <PortalCard key={p.id} portal={p} />
+            ))}
+          </div>
         </div>
       </div>
 
