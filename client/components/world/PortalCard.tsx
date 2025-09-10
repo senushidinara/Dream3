@@ -97,6 +97,19 @@ export default function PortalCard({ portal, enterTo, onEnter }: { portal: Porta
               ))}
             </div>
           )}
+
+          {enterTo && (
+            <div className="mt-4 text-right">
+              <button
+                onClick={() => {
+                  onEnter?.();
+                }}
+                className="px-3 py-1.5 rounded-md bg-primary text-primary-foreground"
+              >
+                Enter Realm →
+              </button>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </div>
