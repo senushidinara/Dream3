@@ -137,4 +137,107 @@ export const slides: Slide[] = [
       { x: 84, y: 60, w: 12, h: 12, action: "collect", id: "frag-join-1" },
     ],
   },
+  {
+    id: "mindpalace-intro",
+    title: "The Mind Palace – Dreams & Memories 🌌",
+    subtitle: "Step inside your imagination",
+    body: "An AI-powered immersive app that lets you explore your inner universe. Walk through dreamlike palaces, unlock memories, and build personalized dreamscapes.",
+    images: [
+      "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fdaee8ec266f34bf8a744c3668a09eb72?format=webp&width=1600",
+      "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fdd600b8ec3644367950f62147cea59af?format=webp&width=1600",
+    ],
+    contentType: "text",
+    hotspots: [{ x: 78, y: 18, w: 10, h: 12, action: "link", id: "gallery" }],
+  },
+  {
+    id: "problem",
+    title: "The Problem",
+    body: "Traditional tools (journals, therapy, apps) often fail to capture the depth of dreams, memories, and inner thought. People want an emotional, immersive way to explore their mind.",
+    images: [
+      "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F85be4d75a49549508580b5c10fa9c116?format=webp&width=1600",
+    ],
+    contentType: "text",
+  },
+  {
+    id: "solution",
+    title: "Solution: The Mind Palace",
+    body: "An AI-powered interactive palace where users walk through dreamscapes, unlock hidden memories, and build emotional resilience. A fusion of neuroscience, creativity, and AI storytelling.",
+    images: [
+      "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fdaee8ec266f34bf8a744c3668a09eb72?format=webp&width=1600",
+    ],
+    contentType: "text",
+    hotspots: [{ x: 20, y: 70, w: 12, h: 12, action: "link", id: "library" }],
+  },
+  {
+    id: "product-demo",
+    title: "Product Demo",
+    body: "Imagine entering a dreamlike palace, choosing a door to a world that represents a memory, interacting with glowing objects that unlock emotions, and saving personalized dreamscapes.",
+    images: [
+      "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fdaee8ec266f34bf8a744c3668a09eb72?format=webp&width=1600",
+    ],
+    contentType: "video",
+    videoUrls: [
+      "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fd927b7457b774f65b1a8e16d2b400a22?alt=media&token=ed62e231-5ee8-4beb-a070-314e945aab7c&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+      "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fc1dd8dd7f73345f7bf683e0e40cb3437?alt=media&token=3c965fe7-b1d8-47e0-bdeb-68f4a7049cef&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+      "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F7b087ce4b5314e3a876ca8be09f481cd?alt=media&token=03a6eff8-6379-4c4a-a8b9-ce9b57ae11a3&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+      "https://cdn.builder.io/o/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F2af3b82a3981486887baed942ed0b382?alt=media&token=40a6593d-d2a1-4a2c-aaea-a09feacda550&apiKey=dc3782de61224ee6afee73d63ac0f50c",
+    ],
+  },
+  {
+    id: "audience",
+    title: "Target Audience",
+    body: "Students: strengthen memory & creativity. Creatives: unlock inspiration. Mental health advocates: emotional healing. Lifelong learners: self-discovery.",
+    images: [
+      "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Ffc265a13f8d141d69d1e34fa87b795e7?format=webp&width=1600",
+    ],
+    contentType: "text",
+  },
+  {
+    id: "market",
+    title: "Market Opportunity",
+    body: "$5B+ Global Wellness & $12B+ EdTech — growing demand for immersive storytelling & mental health tools.",
+    images: [
+      "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F561ed111244e4e20828739bee50323b8?format=webp&width=1600",
+    ],
+    contentType: "text",
+  },
+  {
+    id: "technology",
+    title: "Technology",
+    body: "AI storytelling engines, cloud-based platform, VR/AR-ready 3D dreamscapes, and adaptive audio. Integrations with text-to-scene and image models for dynamic environments.",
+    images: [
+      "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F6e9aec51861549a89390ad7909a680d3?format=webp&width=1600",
+    ],
+    contentType: "text",
+  },
+  {
+    id: "uvp",
+    title: "Unique Value Proposition",
+    body: "Interactive and immersive (not passive like meditation apps), focused on self-discovery (not just escape like games), and personalized (not a one-size-fits-all therapy tool).",
+    images: [
+      "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fdaee8ec266f34bf8a744c3668a09eb72?format=webp&width=1600",
+    ],
+    contentType: "text",
+  },
+  {
+    id: "roadmap",
+    title: "Roadmap & Future Vision",
+    body: "Current: interactive web prototype + AI dreamscapes. Next: VR expansion, neural storytelling. Future: memory-sharing network & collaborative dream worlds.",
+    images: [
+      "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F256142451f3a45b8a9cfcb7d4693f47f?format=webp&width=1600",
+    ],
+    contentType: "text",
+  },
+  {
+    id: "join-quest",
+    title: "Join the quest today!",
+    body: "Start exploring and collect your first Dream Fragment. Your mind is not a place to escape — it's a universe to explore.",
+    images: [
+      "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2Fdd600b8ec3644367950f62147cea59af?format=webp&width=1600",
+    ],
+    contentType: "text",
+    hotspots: [
+      { x: 84, y: 60, w: 12, h: 12, action: "collect", id: "frag-join-2" },
+    ],
+  },
 ];
