@@ -19,7 +19,15 @@ export type Portal = {
   description?: string;
 };
 
-export default function PortalCard({ portal, enterTo, onEnter }: { portal: Portal; enterTo?: string; onEnter?: () => void }) {
+export default function PortalCard({
+  portal,
+  enterTo,
+  onEnter,
+}: {
+  portal: Portal;
+  enterTo?: string;
+  onEnter?: () => void;
+}) {
   const [open, setOpen] = useState(false);
   const [mediaIndex, setMediaIndex] = useState(0);
   const active = portal.media?.[mediaIndex];
