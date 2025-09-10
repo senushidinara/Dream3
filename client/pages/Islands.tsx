@@ -196,10 +196,19 @@ export default function Islands() {
         >
           <ThreeScene
             images={[
-              "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F4b659da8a22e4f58841b21f388be5a09?format=webp&width=1600",
-              "https://cdn.builder.io/api/v1/image/assets%2Fdc3782de61224ee6afee73d63ac0f50c%2F510711956ce145129c1fb0753e6c5230?format=webp&width=1600",
+              "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F3d3bb36c424543288c2484383800e261?format=webp&width=1600",
+              "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F369f2f71f3a44f64b6c4114234b83f5e?format=webp&width=1600",
             ]}
             filter="brightness(1.04) saturate(1.08)"
+          />
+          <MemoryOrbs
+            images={[
+              "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F5e1364504e284621b0559def79059088?format=webp&width=600",
+              "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F63f78bf8ed984f56956557af793c22b8?format=webp&width=600",
+              "https://cdn.builder.io/api/v1/image/assets%2F83b5046001d2448094e92a95add784c0%2F5e3bcf0f342a4699953f7a21f6369f50?format=webp&width=600",
+            ]}
+            density={16}
+            speed={0.12}
           />
 
           {/* interactive thumbnails */}
