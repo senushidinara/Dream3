@@ -26,10 +26,7 @@ export default function PortalCard({ portal }: { portal: Portal }) {
 
   return (
     <div className="relative rounded-xl overflow-hidden border border-border/50 bg-card/60">
-      <button
-        onClick={() => setOpen(true)}
-        className="group w-full text-left"
-      >
+      <button onClick={() => setOpen(true)} className="group w-full text-left">
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
             src={portal.image}
@@ -54,7 +51,10 @@ export default function PortalCard({ portal }: { portal: Portal }) {
         </div>
       </button>
 
-      <DreamFragment id={`frag-${portal.id}`} className="absolute -top-2 -right-2" />
+      <DreamFragment
+        id={`frag-${portal.id}`}
+        className="absolute -top-2 -right-2"
+      />
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-3xl">
