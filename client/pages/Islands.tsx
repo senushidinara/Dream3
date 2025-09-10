@@ -284,6 +284,18 @@ export default function Islands() {
             </div>
           ))}
         </div>
+
+        <div className="mt-12">
+          <h2 className="text-xl font-bold">Dream World Portals</h2>
+          <p className="text-sm text-muted-foreground mt-1">
+            Step through any door to glimpse a realm. Each portal can hide a Dream Fragment.
+          </p>
+          <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PORTALS.map((p) => (
+              <PortalCard key={p.id} portal={p} />
+            ))}
+          </div>
+        </div>
       </div>
 
       <Dialog open={!!open} onOpenChange={(o) => !o && setOpenId(null)}>
