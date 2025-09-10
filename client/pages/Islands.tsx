@@ -11,6 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import MemoryOrbs from "@/components/world/MemoryOrbs";
+import PortalCard, { Portal } from "@/components/world/PortalCard";
 
 const ISLANDS = [
   {
